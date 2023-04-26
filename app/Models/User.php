@@ -21,6 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'dni',
+        'phone',
+        'address',
+        'card_number',
+        'photo_path1',
+        'photo_path2',
+        'photo_path3'
     ];
 
     /**
@@ -41,4 +48,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Subscription(){
+        return $this->belongsTo(Subscription::class,'subscription_id');
+    }
+
+    public function Notifications(){
+        return $this->hasMany(Notification::class,'user_id');
+    }
+
+    public function Guests(){
+        return $this->hasMany(Guest::class,'user_id');
+    }
+
+    public function Photographers(){
+        return $this->hasMany(Photographer::class,'user_id');
+    }
+
+    public function Organizers(){
+        return $this->hasMany(Organizer::class,'user_id');
+    }
 }

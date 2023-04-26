@@ -20,6 +20,15 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('dni');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('card_number');
+            $table->string('photo_path1');
+            $table->string('photo_path2');
+            $table->string('photo_path3');
+            $table->unsignedBigInteger('subscription_id')->nullable();
+            $table->foreign('subscription_id')->references('id')->on('subscriptions')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }
