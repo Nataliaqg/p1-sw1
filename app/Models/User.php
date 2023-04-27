@@ -24,10 +24,7 @@ class User extends Authenticatable
         'dni',
         'phone',
         'address',
-        'card_number',
-        'photo_path1',
-        'photo_path2',
-        'photo_path3'
+        'birthday',
     ];
 
     /**

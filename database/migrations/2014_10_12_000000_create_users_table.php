@@ -15,18 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('name');//
+            $table->string('email')->unique();//
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password');//
             $table->rememberToken();
-            $table->string('dni');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('card_number');
-            $table->string('photo_path1');
-            $table->string('photo_path2');
-            $table->string('photo_path3');
+            $table->string('dni');//
+            $table->string('phone');//
+            $table->string('address');//
+            $table->date('birthday');//
+            $table->string('photo_path1')->nullable();
+            $table->string('photo_path2')->nullable();
+            $table->string('photo_path3')->nullable();
             $table->unsignedBigInteger('subscription_id')->nullable();
             $table->foreign('subscription_id')->references('id')->on('subscriptions')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
