@@ -74,5 +74,9 @@
 @endsection
 
 @section('css')
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+@stop
+
+@section('js')
+<script src={{ asset('assets/js/app.js') }} defer></script>
 @stop
