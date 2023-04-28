@@ -21,4 +21,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/photographerEvent', [App\Http\Controllers\PhotographerEventController::class, 'index'])->name('photographerEvent.index');
+Route::get('/eventPhotographer', [App\Http\Controllers\EventPhotographerController::class, 'index'])->name('eventPhotographer.index');
