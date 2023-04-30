@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-xl-4">
                 {{-- CARRUSEL --}}
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" wire:ignore.self>
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -29,22 +29,22 @@
                             aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" wire:key='photo_path1'>
                             <img src="{{ asset($this->user['photo_path1']) }}" class="d-block w-100"
                                 style=" max-height: 520px;" alt="...">
                             <label style="z-index: 99;" for="photo_path1"
                                 class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
                                     class="fas fa-pencil-alt"></i></label>
-                            <input wire:model='photo_path1' accept="image/*" type="file" id="photo_path1"
+                            <input wire:model.defer='photo_path1' accept="image/*" type="file" id="photo_path1"
                                 style="display:none">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" wire:key='photo_path2'>
                             <img src="{{ asset($this->user['photo_path2']) }}" class="d-block w-100"
                                 style=" max-height: 520px;" alt="...">
                             <label style="z-index: 99;" for="photo_path2"
                                 class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
                                     class="fas fa-pencil-alt"></i></label>
-                            <input wire:model.lazy='photo_path2' accept="image/*" type="file" id="photo_path2"
+                            <input wire:model.defer='photo_path2' accept="image/*" type="file" id="photo_path2"
                                 style="display:none">
                         </div>
                         <div class="carousel-item">
@@ -53,7 +53,7 @@
                             <label style="z-index: 99;" for="photo_path3"
                                 class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
                                     class="fas fa-pencil-alt"></i></label>
-                            <input wire:model.lazy='photo_path3' accept="image/*" type="file" id="photo_path3"
+                            <input wire:model.defer='photo_path3' accept="image/*" type="file" id="photo_path3"
                                 style="display:none">
                         </div>
                     </div>
