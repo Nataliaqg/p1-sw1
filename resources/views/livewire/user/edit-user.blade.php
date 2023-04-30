@@ -1,5 +1,6 @@
-@extends('main-dashboard')
-@section('sidebar_content')
+<div>
+    <p>editar user livewire hijo</p>
+
     <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
         <div class="container-xl px-4">
             <div class="page-header-content">
@@ -20,7 +21,8 @@
                 <!-- Profile picture card-->
                 <div class="card mb-4 mb-xl-0">
                     <div class="card-header">Imagenes de perfil</div>
-                    <div class="card-body text-center" style="flex-direction: column; height: 466px; overflow-y: scroll; overflow-x:hidden">
+                    <div class="card-body text-center"
+                        style="flex-direction: column; height: 466px; overflow-y: scroll; overflow-x:hidden">
                         <form method="POST" enctype="multipart/form-data">
                             @csrf
                             {{-- FOTO1 --}}
@@ -37,8 +39,8 @@
                                         </span>
                                     @enderror
                                 </div>
-                                    <img id="photo1-preview" src="#" style="display: none">
-                            </div>  
+                                <img id="photo1-preview" src="#" style="display: none">
+                            </div>
                             {{-- FOTO2 --}}
                             <div class="form-group">
                                 <label for="photo2" class="text-success fw-800">{{ __('Foto 2') }}</label>
@@ -53,8 +55,8 @@
                                         </span>
                                     @enderror
                                 </div>
-                                    <img id="photo2-preview" src="#" style="display: none">
-                            </div>        
+                                <img id="photo2-preview" src="#" style="display: none">
+                            </div>
                             {{-- FOTO3  --}}
                             <div class="form-group">
                                 <label for="photo3" class="text-success fw-800">{{ __('Foto 3') }}</label>
@@ -69,8 +71,8 @@
                                         </span>
                                     @enderror
                                 </div>
-                                    <img id="photo3-preview" src="#" style="display: none">
-                            </div>                 
+                                <img id="photo3-preview" src="#" style="display: none">
+                            </div>
                             <div class="form-group" style="margin-top: 10px">
                                 <button type="submit" class="btn btn-primary">{{ __('Subir Fotos') }}</button>
                             </div>
@@ -111,8 +113,8 @@
 
                                     <div class="col-md-6">
                                         <input id="dni" type="text"
-                                            class="form-control @error('dni') is-invalid @enderror" name="dni" required
-                                            autocomplete="dni">
+                                            class="form-control @error('dni') is-invalid @enderror" name="dni"
+                                            required autocomplete="dni">
 
                                         @error('dni')
                                             <span class="invalid-feedback" role="alert">
@@ -162,8 +164,8 @@
 
                                     <div class="col-md-6">
                                         <input id="birthday" type="date"
-                                            class="form-control @error('birthday') is-invalid @enderror" name="birthday"
-                                            required autocomplete="birthday">
+                                            class="form-control @error('birthday') is-invalid @enderror"
+                                            name="birthday" required autocomplete="birthday">
 
                                         @error('birthday')
                                             <span class="invalid-feedback" role="alert">
@@ -198,39 +200,44 @@
             </div>
         </div>
     </div>
-@endsection
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Evento para la foto 1
-        document.getElementById('photo1').addEventListener('change', function() {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('photo1-preview').setAttribute('src', e.target.result);
-                document.getElementById('photo1-preview').setAttribute('style', 'max-width:200px; max-height:200px');
-            }
-            reader.readAsDataURL(this.files[0]);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Evento para la foto 1
+            document.getElementById('photo1').addEventListener('change', function() {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photo1-preview').setAttribute('src', e.target.result);
+                    document.getElementById('photo1-preview').setAttribute('style',
+                        'max-width:200px; max-height:200px');
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            // Evento para la foto 2
+            document.getElementById('photo2').addEventListener('change', function() {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photo2-preview').setAttribute('src', e.target.result);
+                    document.getElementById('photo2-preview').setAttribute('style',
+                        'max-width:200px; max-height:200px');
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            // Evento para la foto 3
+            document.getElementById('photo3').addEventListener('change', function() {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photo3-preview').setAttribute('src', e.target.result);
+                    document.getElementById('photo3-preview').setAttribute('style',
+                        'max-width:200px; max-height:200px');
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
         });
-
-        // Evento para la foto 2
-        document.getElementById('photo2').addEventListener('change', function() {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('photo2-preview').setAttribute('src', e.target.result);
-                document.getElementById('photo2-preview').setAttribute('style', 'max-width:200px; max-height:200px');
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
-
-        // Evento para la foto 3
-        document.getElementById('photo3').addEventListener('change', function() {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('photo3-preview').setAttribute('src', e.target.result);
-                document.getElementById('photo3-preview').setAttribute('style', 'max-width:200px; max-height:200px');
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
-    });
-</script>
+    </script>
 
 
+
+
+</div>

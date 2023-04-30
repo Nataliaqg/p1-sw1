@@ -1,0 +1,10 @@
+@extends('main-dashboard')
+@section('sidebar_content')
+    @livewire('user.index-lw')
+@endsection
+@section('css')
+    @livewireStyles
+@stop
+@section('js')
+    @livewireScripts
+@stop

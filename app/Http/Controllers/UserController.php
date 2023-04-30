@@ -9,6 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index(){
-        return view('user.profile');
+        return view('user.index');
     }
 }

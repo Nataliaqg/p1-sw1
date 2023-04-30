@@ -21,18 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/eventPhotographer', [App\Http\Controllers\EventPhotographerController::class, 'index'])->name('eventPhotographer.index');
-
-
-
-
-
-
-
-
 
 Route::get('/faceid', [App\Http\Controllers\EventPhotographerController::class, 'faceid'])->name('faceid.index');
 
-
-Route::get('/profile', [App\Http\Controllers\UserController::class, 'index'])->name('profile.index');
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
 
