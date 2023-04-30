@@ -18,67 +18,33 @@
     <div class="container-xl px-4 mt-4">
         <div class="row">
             <div class="col-xl-4">
-                <!-- Profile picture card-->
-                <div class="card mb-4 mb-xl-0">
-                    <div class="card-header">Imagenes de perfil</div>
-                    <div class="card-body text-center"
-                        style="flex-direction: column; height: 466px; overflow-y: scroll; overflow-x:hidden">
-                        <form method="POST" enctype="multipart/form-data">
-                            @csrf
-                            {{-- FOTO1 --}}
-                            <div class="form-group">
-                                <label for="photo1" class="text-success fw-800">{{ __('Foto 1') }}</label>
-                                <div class="custom-file">
-                                    <input id="photo1" type="file"
-                                        class="custom-file-input @error('photo1') is-invalid @enderror" name="photo1"
-                                        accept="image/*">
-                                    <label class="custom-file-label" for="photo1">{{ __('Subir imagen') }}</label>
-                                    @error('photo1')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <img id="photo1-preview" src="#" style="display: none">
-                            </div>
-                            {{-- FOTO2 --}}
-                            <div class="form-group">
-                                <label for="photo2" class="text-success fw-800">{{ __('Foto 2') }}</label>
-                                <div class="custom-file">
-                                    <input id="photo2" type="file"
-                                        class="custom-file-input @error('photo2') is-invalid @enderror" name="photo2"
-                                        accept="image/*">
-                                    <label class="custom-file-label" for="photo2">{{ __('Subir imagen') }}</label>
-                                    @error('photo2')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <img id="photo2-preview" src="#" style="display: none">
-                            </div>
-                            {{-- FOTO3  --}}
-                            <div class="form-group">
-                                <label for="photo3" class="text-success fw-800">{{ __('Foto 3') }}</label>
-                                <div class="custom-file">
-                                    <input id="photo3" type="file"
-                                        class="custom-file-input @error('photo3') is-invalid @enderror" name="photo3"
-                                        accept="image/*">
-                                    <label class="custom-file-label" for="photo3">{{ __('Subir imagen') }}</label>
-                                    @error('photo3')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <img id="photo3-preview" src="#" style="display: none">
-                            </div>
-                            <div class="form-group" style="margin-top: 10px">
-                                <button type="submit" class="btn btn-primary">{{ __('Subir Fotos') }}</button>
-                            </div>
-                        </form>
+                {{-- CARRUSEL --}}
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
-                </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" >
+                        <img src="{{asset('assets/img/profile-example/Camila1.jpg')}}" class="d-block w-100" style=" max-height: 520px;" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{{asset('assets/img/profile-example/Camila2.jpg')}}" class="d-block w-100" style=" max-height: 520px;" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{{asset('assets/img/profile-example/camila3.jpg')}}" class="d-block w-100"  style=" max-height: 520px;" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
             </div>
             <div class="col-xl-8">
                 <!-- Account details card-->
@@ -97,8 +63,8 @@
                                     <div class="col-md-6">
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+                                            required autocomplete="name" autofocus wire:model='user.name'>
+                                            
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -114,7 +80,7 @@
                                     <div class="col-md-6">
                                         <input id="dni" type="text"
                                             class="form-control @error('dni') is-invalid @enderror" name="dni"
-                                            required autocomplete="dni">
+                                            required autocomplete="dni" wire:model='user.dni'>
 
                                         @error('dni')
                                             <span class="invalid-feedback" role="alert">
@@ -131,7 +97,7 @@
                                     <div class="col-md-6">
                                         <input id="phone" type="tel"
                                             class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                            required autocomplete="phone">
+                                            required autocomplete="phone" wire:model='user.phone'>
 
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
@@ -148,7 +114,7 @@
                                     <div class="col-md-6">
                                         <input id="address" type="text"
                                             class="form-control @error('address') is-invalid @enderror" name="address"
-                                            required autocomplete="address">
+                                            required autocomplete="address" wire:model='user.address'>
 
                                         @error('address')
                                             <span class="invalid-feedback" role="alert">
@@ -165,7 +131,7 @@
                                     <div class="col-md-6">
                                         <input id="birthday" type="date"
                                             class="form-control @error('birthday') is-invalid @enderror"
-                                            name="birthday" required autocomplete="birthday">
+                                            name="birthday" required autocomplete="birthday" wire:model='user.birthday'>
 
                                         @error('birthday')
                                             <span class="invalid-feedback" role="alert">
@@ -182,7 +148,7 @@
                                     <div class="col-md-6">
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required autocomplete="email">
+                                            value="{{ old('email') }}" required autocomplete="email" wire:model='user.email'>
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -236,8 +202,4 @@
             });
         });
     </script>
-
-
-
-
 </div>
