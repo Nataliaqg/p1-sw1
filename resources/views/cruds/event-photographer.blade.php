@@ -9,7 +9,7 @@
 @endsection
 @section('css')
     @livewireStyles
-    <link href="css/styles.css" rel="stylesheet" />
+    {{-- <link href="css/styles.css" rel="stylesheet" /> --}}
     {{-- <link rel="stylesheet" href={{ asset('assets/css/photographer/uploadphotos.css') }}> --}}
 @stop
 @section('js')
