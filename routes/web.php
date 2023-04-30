@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/eventPhotographer', [App\Http\Controllers\EventPhotographerController::class, 'index'])->name('eventPhotographer.index');
+Route::get('/faceid', [App\Http\Controllers\EventPhotographerController::class, 'faceid'])->name('faceid.index');
