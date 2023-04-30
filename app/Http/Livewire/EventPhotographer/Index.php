@@ -5,6 +5,8 @@ namespace App\Http\Livewire\EventPhotographer;
 use Livewire\Component;
 
 use Livewire\WithFileUploads;
+use Intervention\Image\Image;
+
 
 class Index extends Component
 {
