@@ -13,9 +13,6 @@ class EditUser extends Component
     public $user = [];
     public $photo_path1, $photo_path2, $photo_path3;
 
-    //variable modal
-    public $openModal=false;
-    
     public function __construct()
     {
         $user = Auth()->user();
@@ -91,6 +88,7 @@ class EditUser extends Component
     }
 
     public function openModal(){
-        $this->openModal= true;
+        // $this->openModal= true;
+        $this->emit('openModal');
     }
 }

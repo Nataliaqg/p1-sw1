@@ -1,4 +1,6 @@
 <div>
+    @livewire('components.modal')
+
     <p>editar user livewire hijo</p>
 
     <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
@@ -187,7 +189,7 @@
                                             class="form-control @error('phone') is-invalid @enderror" name="phone"
                                             required autocomplete="phone" wire:model.lazy='user.phone'>
 
-                                        @error('phone')
+                                        @error('user.phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -204,7 +206,7 @@
                                             class="form-control @error('address') is-invalid @enderror" name="address"
                                             required autocomplete="address" wire:model.lazy='user.address'>
 
-                                        @error('address')
+                                        @error('user.address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -222,7 +224,7 @@
                                             name="birthdate" required autocomplete="birthdate"
                                             wire:model.lazy='user.birthdate'>
 
-                                        @error('birthdate')
+                                        @error('user.birthdate')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -240,7 +242,7 @@
                                             value="{{ old('email') }}" required autocomplete="email"
                                             wire:model.lazy='user.email'>
 
-                                        @error('email')
+                                        @error('user.email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -249,10 +251,10 @@
                                 </div>
                             </form>
                             <!-- Save changes button-->
-                            <button id="modalButton" class="btn btn-primary" wire:click='update()' type="button">Guardar
+                            <button id="modalButton" class="btn btn-primary" wire:click='update()'
+                                type="button">Guardar
                                 cambios</button>
                         </form>
-                            @livewire('components.modal')
                     </div>
                 </div>
             </div>
