@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('dni');//
             $table->string('phone');//
             $table->string('address');//
-            $table->date('birthday');//
+            $table->date('birthdate');//
             $table->string('photo_path1')->nullable();
             $table->string('photo_path2')->nullable();
             $table->string('photo_path3')->nullable();

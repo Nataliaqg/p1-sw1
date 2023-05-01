@@ -15,7 +15,7 @@
             </div>
         </div>
     </header>
-    <div class="container-xl px-4 mt-4" >
+    <div class="container-xl px-4 mt-4">
         <div class="row">
             <div class="col-xl-4">
                 {{-- CARRUSEL --}}
@@ -29,30 +29,96 @@
                             aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
+                        {{-- FOTO1 --}}
                         <div class="carousel-item active">
-                            <img src="{{ asset($this->user['photo_path1']) }}" class="d-block w-100"
-                                style=" max-height: 520px;" alt="...">
-                            <label style="z-index: 99;" for="photo_path1"
-                                class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
-                                    class="fas fa-pencil-alt"></i></label>
-                            <input wire:model='photo_path1' accept="image/*" type="file" id="photo_path1"
+                            @if ($photo_path1)
+                                <img src="{{ $photo_path1->temporaryUrl() }}" class="d-block w-100"
+                                    style=" max-height: 520px;" alt="...">
+                                <span class="text-orange fw-800">Previsualizacion de imagen 1</span>
+                                <label style="z-index: 99;" for="photo_path1"
+                                    class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                        class="fas fa-pencil-alt"></i></label>
+                            @else
+                                @if ($this->user['photo_path1'])
+                                    <img src="{{ asset($this->user['photo_path1']) }}" class="d-block w-100"
+                                        style=" max-height: 520px;" alt="...">
+                                    <label style="z-index: 99;" for="photo_path1"
+                                        class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                            class="fas fa-pencil-alt"></i></label>
+                                    <span class="text-orange fw-800">Imagen 1</span>
+                                @else
+                                    <img src="{{ asset('assets/img/illustrations/profiles/profile-1.png') }}"
+                                        alt="">
+                                    <div style="flex-direction: column">
+                                        <label style="z-index: 99;" for="photo_path1"
+                                            class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                                class="fas fa-solid fa-plus"></i></label>
+                                        <span class="text-orange fw-800">Agregar imagen 1</span>
+                                    </div>
+                                @endif
+                            @endif
+                            <input wire:model="photo_path1" accept="image/*" type="file" id="photo_path1"
                                 style="display:none">
                         </div>
+                        {{-- FOTO2 --}}
                         <div class="carousel-item">
-                            <img src="{{ asset($this->user['photo_path2']) }}" class="d-block w-100"
-                                style=" max-height: 520px;" alt="...">
-                            <label style="z-index: 99;" for="photo_path2"
-                                class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
-                                    class="fas fa-pencil-alt"></i></label>
+                            @if ($photo_path2)
+                                <img src="{{ $photo_path2->temporaryUrl() }}" class="d-block w-100"
+                                    style=" max-height: 520px;" alt="...">
+                                <span class="text-orange fw-800">Previsualizacion de imagen 2</span>
+                                <label style="z-index: 99;" for="photo_path2"
+                                    class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                        class="fas fa-pencil-alt"></i></label>
+                            @else
+                                @if ($this->user['photo_path2'])
+                                    <img src="{{ asset($this->user['photo_path2']) }}" class="d-block w-100"
+                                        style=" max-height: 520px;" alt="...">
+                                    <label style="z-index: 99;" for="photo_path2"
+                                        class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                            class="fas fa-pencil-alt"></i></label>
+                                    <span class="text-orange fw-800">Imagen 2</span>
+                                @else
+                                    <img src="{{ asset('assets/img/illustrations/profiles/profile-1.png') }}"
+                                        alt="">
+                                    <div style="flex-direction: column">
+                                        <label style="z-index: 99;" for="photo_path2"
+                                            class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                                class="fas fa-solid fa-plus"></i></label>
+                                        <span class="text-orange fw-800">Agregar imagen 2</span>
+                                    </div>
+                                @endif
+                            @endif
                             <input wire:model.lazy='photo_path2' accept="image/*" type="file" id="photo_path2"
                                 style="display:none">
                         </div>
+                        {{-- FOTO3 --}}
                         <div class="carousel-item">
-                            <img src="{{ asset($this->user['photo_path3']) }}" class="d-block w-100"
-                                style=" max-height: 520px;" alt="...">
-                            <label style="z-index: 99;" for="photo_path3"
-                                class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
-                                    class="fas fa-pencil-alt"></i></label>
+                            @if ($photo_path3)
+                                <img src="{{ $photo_path3->temporaryUrl() }}" class="d-block w-100"
+                                    style=" max-height: 520px;" alt="...">
+                                <span class="text-orange fw-800">Previsualizacion de imagen 3</span>
+                                <label style="z-index: 99;" for="photo_path3"
+                                    class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                        class="fas fa-pencil-alt"></i></label>
+                            @else
+                                @if ($this->user['photo_path3'])
+                                    <img src="{{ asset($this->user['photo_path3']) }}" class="d-block w-100"
+                                        style=" max-height: 520px;" alt="...">
+                                    <label style="z-index: 99;" for="photo_path3"
+                                        class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                            class="fas fa-pencil-alt"></i></label>
+                                    <span class="text-orange fw-800">Imagen 3</span>
+                                @else
+                                    <img src="{{ asset('assets/img/illustrations/profiles/profile-1.png') }}"
+                                        alt="">
+                                    <div style="flex-direction: column">
+                                        <label style="z-index: 99;" for="photo_path3"
+                                            class="btn btn-edit btn-dark position-absolute top-0 start-0"><i
+                                                class="fas fa-solid fa-plus"></i></label>
+                                        <span class="text-orange fw-800">Agregar imagen 3</span>
+                                    </div>
+                                @endif
+                            @endif
                             <input wire:model.lazy='photo_path3' accept="image/*" type="file" id="photo_path3"
                                 style="display:none">
                         </div>
@@ -147,16 +213,16 @@
                                 </div>
                                 {{-- Cumple --}}
                                 <div class="row mb-3">
-                                    <label for="birthday"
+                                    <label for="birthdate"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Fecha de nacimiento') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="birthday" type="date"
-                                            class="form-control @error('birthday') is-invalid @enderror"
-                                            name="birthday" required autocomplete="birthday"
-                                            wire:model.lazy='user.birthday'>
+                                        <input id="birthdate" type="date"
+                                            class="form-control @error('birthdate') is-invalid @enderror"
+                                            name="birthdate" required autocomplete="birthdate"
+                                            wire:model.lazy='user.birthdate'>
 
-                                        @error('birthday')
+                                        @error('birthdate')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -183,9 +249,10 @@
                                 </div>
                             </form>
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" wire:click='update()' ype="button">Guardar
+                            <button id="modalButton" class="btn btn-primary" wire:click='update()' type="button">Guardar
                                 cambios</button>
                         </form>
+                            @livewire('components.modal')
                     </div>
                 </div>
             </div>
@@ -194,40 +261,4 @@
     <link href="{{ asset('svg/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Evento para la foto 1
-            document.getElementById('photo1').addEventListener('change', function() {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('photo1-preview').setAttribute('src', e.target.result);
-                    document.getElementById('photo1-preview').setAttribute('style',
-                        'max-width:200px; max-height:200px');
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-            // Evento para la foto 2
-            document.getElementById('photo2').addEventListener('change', function() {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('photo2-preview').setAttribute('src', e.target.result);
-                    document.getElementById('photo2-preview').setAttribute('style',
-                        'max-width:200px; max-height:200px');
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-            // Evento para la foto 3
-            document.getElementById('photo3').addEventListener('change', function() {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('photo3-preview').setAttribute('src', e.target.result);
-                    document.getElementById('photo3-preview').setAttribute('style',
-                        'max-width:200px; max-height:200px');
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-        });
-    </script>
 </div>

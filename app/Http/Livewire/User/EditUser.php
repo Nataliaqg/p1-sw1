@@ -13,6 +13,9 @@ class EditUser extends Component
     public $user = [];
     public $photo_path1, $photo_path2, $photo_path3;
 
+    //variable modal
+    public $openModal=false;
+    
     public function __construct()
     {
         $user = Auth()->user();
@@ -21,16 +24,25 @@ class EditUser extends Component
 
     public function render()
     {
-        //dd($user);
+        //dd($this->user);
         return view('livewire.user.edit-user');
     }
+
+    // public function showModal(){
+    //     $this->modal=true;
+    // }
 
     public function update()
     {
         $this->validate([
-            'user.name' => 'required',
-            'user.birthday' => 'required',
+            'user.name' => ['required', 'string', 'max:150'],
+            'user.dni' => ['required', 'string', 'max:20'],
+            'user.phone' => ['required', 'string', 'max:20'],
+            'user.address' => ['required', 'string', 'max:255'],
+            'user.birthdate' => ['required', 'date'],
+            'user.email' => 'required',
         ]);
+
         $user = User::find($this->user['id']);
 
         if ($this->photo_path1 !== null) {
@@ -42,6 +54,7 @@ class EditUser extends Component
             }
             $imagenes = $this->photo_path1->store('documents', 'public');
             $user->photo_path1 = Storage::url($imagenes);
+            $this->reset('photo_path1');
         }
         if ($this->photo_path2 !== null) {
             if ($user->photo_path2) {
@@ -52,6 +65,7 @@ class EditUser extends Component
             }
             $imagenes = $this->photo_path2->store('documents', 'public');
             $user->photo_path2 = Storage::url($imagenes);
+            $this->reset('photo_path2');
         }
         if ($this->photo_path3 !== null) {
             if ($user->photo_path3) {
@@ -62,11 +76,21 @@ class EditUser extends Component
             }
             $imagenes = $this->photo_path3->store('documents', 'public');
             $user->photo_path3 = Storage::url($imagenes);
+            $this->reset('photo_path3');
         }
 
         $user->name=$this->user['name'];
-        $user->birthday=$this->user['birthday'];
+        $user->email=$this->user['email'];
+        $user->dni=$this->user['dni'];
+        $user->phone=$this->user['phone'];
+        $user->address=$this->user['address'];
+        $user->birthdate=$this->user['birthdate'];
         $user->save();
         $this->user=$user->toArray();
+        $this->openModal();
+    }
+
+    public function openModal(){
+        $this->openModal= true;
     }
 }
