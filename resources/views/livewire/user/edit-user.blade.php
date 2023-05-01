@@ -260,7 +260,5 @@
             </div>
         </div>
     </div>
-    <link href="{{ asset('svg/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    
 </div>
