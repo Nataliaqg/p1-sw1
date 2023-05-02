@@ -54,15 +54,15 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class,'user_id');
     }
 
-    public function Guests(){
-        return $this->hasMany(Guest::class,'user_id');
+    public function Guest(){
+        return $this->hasOne(Guest::class,'user_id');
     }
 
-    public function Photographers(){
-        return $this->hasMany(Photographer::class,'user_id');
+    public function Photographer(){
+        return $this->hasOne(Photographer::class,'user_id');
     }
 
-    public function Organizers(){
-        return $this->hasMany(Organizer::class,'user_id');
+    public function Organizer(){
+        return $this->hasOne(Organizer::class,'user_id');
     }
 }

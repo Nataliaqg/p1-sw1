@@ -16,6 +16,7 @@ class CreateOrganizersTable extends Migration
         Schema::create('organizers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->boolean('status')->default(false);
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

@@ -11,8 +11,6 @@ class Photography extends Model
     protected $table='photographies';
     protected $guarded = [
         'id',
-        'status',
-        'price',
         'created_at',
         'updated_at',
     ];

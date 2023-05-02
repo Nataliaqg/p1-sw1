@@ -11,7 +11,6 @@ class Notification extends Model
     protected $table='notifications';
     protected $guarded = [
         'id',
-        'description',
         'created_at',
         'updated_at',
     ];

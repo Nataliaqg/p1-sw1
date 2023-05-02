@@ -15,8 +15,9 @@ class CreatePhotographersTable extends Migration
     {
         Schema::create('photographers', function (Blueprint $table) {
             $table->id();
-            $table->decimal('service_price',12,2);
-            $table->unsignedBigInteger('specialization_id');
+            $table->decimal('service_price',12,2)->nullable();
+            $table->unsignedBigInteger('specialization_id')->nullable();
+            $table->boolean('status')->default(false);
             $table->foreign('specialization_id')->references('id')->on('specializations')->onUpdate('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

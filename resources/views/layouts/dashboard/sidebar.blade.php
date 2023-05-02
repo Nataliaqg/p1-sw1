@@ -59,13 +59,15 @@
                     </div>
                 </div>
             </div>
-            <!-- Sidenav Footer-->
+            @auth
+                 <!-- Sidenav Footer-->
             <div class="sidenav-footer">
                 <div class="sidenav-footer-content">
                     <div class="sidenav-footer-subtitle">Has iniciado sesion como:</div>
                     <div class="sidenav-footer-title">{{Auth::user()->name}}</div>
                 </div>
             </div>
+            @endauth
         </nav>
     </div>
     <div id="layoutSidenav_content">

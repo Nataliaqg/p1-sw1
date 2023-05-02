@@ -11,13 +11,6 @@ class Event extends Model
     protected $table='events';
     protected $guarded = [
         'id',
-        'name',
-        'date',
-        'time',
-        'address',
-        'required_photographers',
-        'guest_qr_path',
-        'photographer_qr_path',
         'created_at',
         'updated_at',
     ];

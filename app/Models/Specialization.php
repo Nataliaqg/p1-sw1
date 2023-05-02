@@ -11,7 +11,6 @@ class Specialization extends Model
     protected $table='specializations';
     protected $guarded = [
         'id',
-        'name',
         'created_at',
         'updated_at',
     ];

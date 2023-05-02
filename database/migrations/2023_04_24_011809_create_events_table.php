@@ -20,8 +20,7 @@ class CreateEventsTable extends Migration
             $table->time('time');
             $table->string('address');
             $table->integer('required_photographers')->default(1);
-            $table->string('guest_qr_path');
-            $table->string('photographer_qr_path');
+            $table->string('guest_qr_path')->nullable();
             $table->unsignedBigInteger('organizer_id');
             $table->foreign('organizer_id')->references('id')->on('organizers')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

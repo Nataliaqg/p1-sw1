@@ -11,9 +11,6 @@ class Subscription extends Model
     protected $table='subscriptions';
     protected $guarded = [
         'id',
-        'name',
-        'description',
-        'price',
         'created_at',
         'updated_at',
     ];

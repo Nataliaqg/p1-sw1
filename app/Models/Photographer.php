@@ -11,7 +11,6 @@ class Photographer extends Model
     protected $table='photographers';
     protected $guarded = [
         'id',
-        'service_price',
         'created_at',
         'updated_at',
     ];

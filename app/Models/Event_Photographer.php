@@ -11,8 +11,6 @@ class Event_Photographer extends Model
     protected $table='event_photographer';
     protected $guarded = [
         'id',
-        'event_id',
-        'photographer_id',
         'created_at',
         'updated_at',
     ];

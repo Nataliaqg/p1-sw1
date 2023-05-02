@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventPhotographerController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,18 +17,23 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return redirect(route('login'));
 });
 
-Auth::routes();
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/eventPhotographer', [EventPhotographerController::class, 'index'])->name('eventPhotographer.index');
 
-Route::get('/eventPhotographer', [App\Http\Controllers\EventPhotographerController::class, 'index'])->name('eventPhotographer.index');
+    Route::get('/faceid', [EventPhotographerController::class, 'faceid'])->name('faceid.index');
 
-Route::get('/faceid', [App\Http\Controllers\EventPhotographerController::class, 'faceid'])->name('faceid.index');
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
-Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+    Route::get('/event',[EventController::class,'index'])->name('event.index');
+});
+
+
 
