@@ -15,6 +15,7 @@ class CreatePhotographersTable extends Migration
     {
         Schema::create('photographers', function (Blueprint $table) {
             $table->id();
+            $table->string('description')->nullable();
             $table->decimal('service_price',12,2)->nullable();
             $table->unsignedBigInteger('specialization_id')->nullable();
             $table->boolean('status')->default(false);

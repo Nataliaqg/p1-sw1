@@ -35,6 +35,12 @@ class CreateEvent extends Component
         $newEvent = Event::create(
             $this->event
         );
+        $this->openModal();
+    }
 
+    public function openModal(){
+        $action='Crear evento';
+        $message='El evento ha sido creado exitosamente';
+        $this->emit('openModal',$action,$message);
     }
 }

@@ -7,7 +7,7 @@ use Livewire\Component;
 class IndexLw extends Component
 {   
     public $create=false;
-    public $edit=false;
+    public $show=false;
 
     public function render()
     {
@@ -16,10 +16,10 @@ class IndexLw extends Component
 
     public function createEvent(){
         $this->create=true;
-        $this->edit=false;
+        $this->show=false;
     }
-    public function editEvent(){
-        $this->edit=true;
+    public function showEvent(){
+        $this->show=true;
         $this->create=false;
     }
 }
