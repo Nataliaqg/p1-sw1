@@ -7,6 +7,8 @@ use Livewire\Component;
 class Modal extends Component
 {
     public $openModal;
+    public $action;
+    public $message;
     
     protected $listeners = [
         'openModal',
@@ -16,8 +18,11 @@ class Modal extends Component
     {
         return view('livewire.components.modal');
     }
-    public function openModal(){
+    public function openModal($action,$message){
+        $this->action=$action;
+        $this->message=$message;
         $this->openModal=true;
+
     }
     public function closeModal(){
         $this->openModal=false;

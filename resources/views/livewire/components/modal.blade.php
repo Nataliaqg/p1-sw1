@@ -6,7 +6,7 @@
           <div class="modal-content">
             <div class="modal-header bg-primary text-white">
               <h5 class="modal-title" id="exampleModalLabel">
-                Titulo
+                {{$action}}
               </h5>
               <button
                 type="button"
@@ -18,7 +18,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <h3>dsjsdkksdjfjsd sdkfjfsd</h3>
+              <h3>{{$message}}</h3>
             </div>
           </div>
         </div>

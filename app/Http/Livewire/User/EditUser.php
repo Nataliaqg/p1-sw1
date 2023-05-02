@@ -21,13 +21,8 @@ class EditUser extends Component
 
     public function render()
     {
-        //dd($this->user);
         return view('livewire.user.edit-user');
     }
-
-    // public function showModal(){
-    //     $this->modal=true;
-    // }
 
     public function update()
     {
@@ -88,7 +83,8 @@ class EditUser extends Component
     }
 
     public function openModal(){
-        // $this->openModal= true;
-        $this->emit('openModal');
+        $action='Editar usuario';
+        $message='La informacion del usuario ha sido actualizada exitosamente';
+        $this->emit('openModal',$action,$message);
     }
 }
