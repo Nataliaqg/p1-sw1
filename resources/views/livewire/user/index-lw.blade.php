@@ -1,5 +1,4 @@
 <div>
-    <h1>user livewire padre</h1>
     <button wire:click='editUser()'>editar usuario</button>
     <button wire:click='showUser()'>ver usuario</button>
 

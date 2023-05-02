@@ -1,8 +1,5 @@
 <div>
     @livewire('components.modal')
-
-    <p>editar user livewire hijo</p>
-
     <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
         <div class="container-xl px-4">
             <div class="page-header-content">
