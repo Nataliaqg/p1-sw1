@@ -1,6 +1,6 @@
 <div>
     @if ($this->showEdit)
-        @livewire('event.edit-event')
+        @livewire('event.edit-event',['event_id'=>$this->event_id])
     @endif
     <div style=" display: flex;flex-direction: row; justify-content: space-between">
         {{-- Este es el div de la info --}}
@@ -21,7 +21,7 @@
                     </label>
                     <div class="col-md-6 border" style="display: flex; align-items: center">
                         {{-- <span>{{ $user['name'] }}</span> --}}
-                        <span>Fiesta Tematica</span>
+                        <span>{{$event->name}}</span>
                     </div>
                 </div>
                 {{-- Fecha --}}
@@ -31,7 +31,7 @@
                         {{ __('Fecha del evento:') }}
                     </label>
                     <div class="col-md-6 border" style="display: flex; align-items: center">
-                        <span>2023-05-12</span>
+                        <span>{{$event->date}}</span>
                     </div>
                 </div>
                 {{-- Hora --}}
@@ -41,7 +41,7 @@
                         {{ __('Hora del evento:') }}
                     </label>
                     <div class="col-md-6 border" style="display: flex; align-items: center">
-                        <span>22:00</span>
+                        <span>{{$event->time}}</span>
                     </div>
                 </div>
                 {{-- Direccion --}}
@@ -51,7 +51,7 @@
                         {{ __('Direccion del evento:') }}
                     </label>
                     <div class="col-md-6 border" style="display: flex; align-items: center">
-                        <span>Av. paragua Calle D, barrio urquijo. Nro 500</span>
+                        <span>{{$event->address}}</span>
                     </div>
                 </div>
                 {{-- Nro Fotografos --}}
@@ -61,7 +61,7 @@
                         {{ __('Número de fotografos requeridos:') }}
                     </label>
                     <div class="col-md-6 border" style="display: flex; align-items: center">
-                        <span>5</span>
+                        <span>{{$event->required_photographers}}</span>
                     </div>
                 </div>
             </div>

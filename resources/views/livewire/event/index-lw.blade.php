@@ -1,13 +1,12 @@
 <div>
     <button wire:click='createEvent()'>Crear evento</button>
-    <button wire:click='showEvent()'>Ver evento</button>
     <button wire:click='showIndex()'>Ver index</button>
     @if ($this->create)
         @livewire('event.create-event')
     @endif
 
     @if ($this->show)
-        @livewire('event.show-event')
+        @livewire('event.show-event',['event_id'=>$this->event_id])
     @endif
     @if ($this->index)
         <main>
@@ -40,36 +39,38 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            {{-- CARD1 --}}
-                            <div class="col-md-4">
-                                <div class="card bg-light mb-4">
-                                    <div class="card-body" style="height: 150px;">
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-heart"></i>
-                                            <span class="text-green">Nombre:</span>
-                                            <span>Graduacion colegio De la Sierra</span>
+                            @foreach ($events as $event)
+                                <div class="col-md-4">
+                                    <div class="card bg-light mb-4">
+                                        <div class="card-body" style="height: 150px;">
+                                            <div style="flex-direction: row">
+                                                <i class="fa-regular fa-heart"></i>
+                                                <span class="text-green">Nombre:</span>
+                                                <span>{{$event->name}}</span>
+                                            </div>
+                                            <div style="flex-direction: row">
+                                                <i class="fa-regular fa-calendar"></i>
+                                                <span class="text-green">Fecha:</span>
+                                                <span>{{$event->date}}</span>
+                                            </div>
+                                            <div style="flex-direction: row">
+                                                <i class="fa-regular fa-clock"></i>
+                                                <span class="text-green">Hora:</span>
+                                                <span>{{$event->time}}</span>
+                                            </div>
                                         </div>
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-calendar"></i>
-                                            <span class="text-green">Fecha:</span>
-                                            <span>2023/25/12</span>
-                                        </div>
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-clock"></i>
-                                            <span class="text-green">Hora:</span>
-                                            <span>19:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer" style="max-height: 80px">
-                                        <div>
-                                            <button class="btn btn-outline-warning" type="button"
-                                                style="float: right">Ver</button>
+                                        <div class="card-footer" style="max-height: 80px">
+                                            <div>
+                                                <button wire:click="showEvent('{{$event->id}}')" class="btn btn-outline-warning" type="button"
+                                                    style="float: right">Ver</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
+                            {{-- CARD1 --}}
                             {{-- CARD2 --}}
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="card bg-light mb-4">
                                     <div class="card-body" style="height: 150px;">
                                         <div style="flex-direction: row">
@@ -95,9 +96,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- CARD3 --}}
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="card bg-light mb-4">
                                     <div class="card-body" style="height: 150px;">
                                         <div style="flex-direction: row">
@@ -123,7 +124,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

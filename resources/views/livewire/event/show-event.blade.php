@@ -15,21 +15,21 @@
         <div style="    position: relative; left: 23px">
             <!-- Button with lift -->
             <a class="btn btn-primary lift bg-danger" wire:click='showEventInfo()'>Informacion</a>
-             <!-- Button with lift -->
-             <a class="btn btn-primary lift bg-warning" wire:click='showEventPhotographer()'>Fotografos</a>
-              <!-- Button with lift -->
+            <!-- Button with lift -->
+            <a class="btn btn-primary lift bg-warning" wire:click='showEventPhotographer()'>Fotografos</a>
+            <!-- Button with lift -->
             <a class="btn btn-primary lift bg-info" wire:click='showEventPhotography()'>Fotografias</a>
         </div>
     </header>
     <div class="container-xl px-4 mt-n10">
         @if ($this->showEventInfo)
-        @livewire('event.show-event-info')
+            @livewire('event.show-event-info', ['event_id' => $this->event_id])
         @endif
         @if ($this->showEventPhotographer)
-        @livewire('event-photographer.show-event-photographer')
+            @livewire('event-photographer.show-event-photographer', ['event_id' => $this->event_id])
         @endif
         @if ($this->showEventPhotography)
-            @livewire('photography.show-event-photography')
+            @livewire('photography.show-event-photography', ['event_id' => $this->event_id])
         @endif
     </div>
 

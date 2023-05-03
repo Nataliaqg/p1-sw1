@@ -7,23 +7,25 @@
     </div>
     <div class="card-body">
         {{-- Fotografo --}}
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <div class="d-flex align-items-center flex-shrink-0 me-3">
-                <div class="avatar avatar-xl me-3 bg-gray-200"><img class="avatar-img img-fluid"
-                        src="assets/img/illustrations/profiles/profile-1.png" alt="" /></div>
-                <div class="d-flex flex-column fw-bold">
-                    <div class="text-dark line-height-normal mb-1">Sid Rooney</div>
-                    <div class="small text-muted line-height-normal">Estudio fotografico</div>
+        @foreach ($photographers as $photographer)
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <div class="d-flex align-items-center flex-shrink-0 me-3">
+                    <div class="avatar avatar-xl me-3 bg-gray-200"><img class="avatar-img img-fluid"
+                            src="assets/img/illustrations/profiles/profile-1.png" alt="" /></div>
+                    <div class="d-flex flex-column fw-bold">
+                        <div class="text-dark line-height-normal mb-1">{{$photographer->User->name}}</div>
+                        <div class="small text-muted line-height-normal">@if ($photographer->specialization_id) {{$photographer->Specialization->name}}  @else Ninguna @endif</div>
+                    </div>
+                </div>
+                <div class="dropdown no-caret">
+                    <button class="btn btn-yellow btn-icon dropdown-toggle" id="dropdownPeople1" type="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-arrow-pointer"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="dropdownPeople1">
+                        <a class="dropdown-item" href="#!">Ver perfil</a>
+                    </div>
                 </div>
             </div>
-            <div class="dropdown no-caret">
-                <button class="btn btn-yellow btn-icon dropdown-toggle" id="dropdownPeople1" type="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-arrow-pointer"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="dropdownPeople1">
-                    <a class="dropdown-item" href="#!">Ver perfil</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
