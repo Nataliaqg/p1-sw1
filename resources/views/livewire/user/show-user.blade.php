@@ -85,73 +85,69 @@
             <div class="col-xl-8">
                 <!-- Account details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Detalles de cuenta</div>
+                    <div class="card-header">
+                        <div style="display: flex; justify-content: space-between">
+                            <span>Detalles de cuenta:</span>
+                            <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%">Editar cuenta</a>
+                        </div>
+                    </div>
                     <div class="card-body">
                         {{-- Nombre --}}
                         <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end text-success">{{ __('Nombre:') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control-plaintext"
-                                    value="{{ $user['name'] }}">
+                            <label 
+                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Nombre:') }}</label>
+                            <div class="col-md-6 border" style="display: flex; align-items: center">
+                                <span>{{ $user['name'] }}</span>
                             </div>
                         </div>
 
                         {{-- Carnet --}}
                         <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end text-success">{{ __('Carnet:') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control-plaintext"
-                                    value="{{ $user['dni'] }}">
+                            <label 
+                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Carnet:') }}</label>
+                            <div class="col-md-6 border" style="display: flex; align-items: center">
+                                    <span>{{ $user['dni'] }}</span>
                             </div>
                         </div>
 
                         {{-- Telefono --}}
                         <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end text-success">{{ __('Telefono:') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control-plaintext" readonly
-                                    value="{{ $user['phone'] }}">
+                            <label 
+                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Telefono:') }}</label>
+                            <div class="col-md-6 border" style="display: flex; align-items: center">
+                                    <span>{{ $user['phone'] }}</span>
                             </div>
                         </div>
 
                         {{-- Direccion --}}
                         <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end text-success">{{ __('Direccion:') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control-plaintext" readonly
-                                    value="{{ $user['address'] }}">
+                            <label 
+                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Direccion:') }}</label>
+                            <div class="col-md-6 border" style="display: flex; align-items: center">
+                                    <span>{{ $user['address'] }}</span>
                             </div>
                         </div>
 
                         {{-- Cumple --}}
                         <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end text-success">{{ __('Fecha de nacimiento:') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control-plaintext" readonly
-                                    value="{{ $user['birthdate'] }}">
+                            <label 
+                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Fecha de nacimiento:') }}</label>
+                            <div class="col-md-6 border" style="display: flex; align-items: center">
+                                <span>{{ $user['birthdate'] }}</span> 
                             </div>
                         </div>
 
                         {{-- Email --}}
                         <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end text-success">{{ __('Email:') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control-plaintext" readonly
-                                    value="{{ $user['email'] }}">
+                            <label 
+                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Email:') }}</label>
+                            <div class="col-md-6 border">
+                                <div>
+                                    <span>{{ $user['email'] }}</span> 
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Save changes button-->
-                        {{-- <button id="modalButton" class="btn btn-primary" wire:click='showEditUser()'
-                            type="button">Editar</button> --}}
                     </div>
-
                 </div>
             </div>
         </div>
