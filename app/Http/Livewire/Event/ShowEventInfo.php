@@ -9,9 +9,15 @@ class ShowEventInfo extends Component
 {
     //mostrar componentes
     public $showEdit=false;
+    public $showInfo=true;
     //
     public $event_id;
     //
+
+    protected $listeners = [
+        'closeEditEvent',
+    ];
+
     public function mount($event_id){
         $this->event_id=$event_id;
     }
@@ -23,5 +29,13 @@ class ShowEventInfo extends Component
 
     public function showEditEvent(){
         $this->showEdit=true;
+        $this->showInfo=false;
     }
+
+    public function closeEditEvent(){
+        $this->showEdit=false;
+        $this->showInfo=true;
+    }
+
+
 }

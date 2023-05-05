@@ -2,6 +2,7 @@
     @if ($this->showEdit)
         @livewire('event.edit-event',['event_id'=>$this->event_id])
     @endif
+    @if ($this->showInfo)
     <div style=" display: flex;flex-direction: row; justify-content: space-between">
         {{-- Este es el div de la info --}}
         <div class="card" style="margin-top: 20px !important ;width: 65%;">
@@ -67,7 +68,7 @@
             </div>
         </div>
         {{-- card del qr --}}
-        <div class="card" style="margin-top: 20px !important ;width: 30%; max-height: 300px">
+        <div class="card" style="margin-top: 20px !important ;width: 30%">
             <div class="card-header">
                 <div style="display: flex; justify-content: space-between">
                     <span>QR del evento:</span>
@@ -76,8 +77,9 @@
                 </div>
             </div>
             <div class="card-body">
-                <img src="{{ asset($event->guest_qr_path)}}" alt="">
+                <img src="{{ asset($event->guest_qr_path)}}" alt="" style="width: 100%; height: 100%;">
             </div>
         </div>
     </div>
+    @endif
 </div>

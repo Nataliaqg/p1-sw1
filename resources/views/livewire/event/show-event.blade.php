@@ -6,7 +6,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="layout"></i></div>
-                            Evento "Nombre"
+                            Evento "{{$event->name}}"
                         </h1>
                     </div>
                 </div>

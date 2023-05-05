@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Event;
 
+use App\Models\Event;
 use Livewire\Component;
 
 class ShowEvent extends Component
@@ -10,6 +11,7 @@ class ShowEvent extends Component
     public $showEventInfo=false;
     public $showEventPhotographer=false;
     public $showEventPhotography=false;
+    public $event;
     public $event_id;
     //
     public function mount($event_id){
@@ -19,6 +21,7 @@ class ShowEvent extends Component
 
     public function render()
     {
+        $this->event=Event::find($this->event_id);
         return view('livewire.event.show-event');
     }
 

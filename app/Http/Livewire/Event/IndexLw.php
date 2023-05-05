@@ -13,6 +13,10 @@ class IndexLw extends Component
     public $index = true;
     public $event_id;
 
+    protected $listeners = [
+        'showEvent'
+    ];
+
     public function render()
     {
 

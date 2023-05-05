@@ -1,5 +1,4 @@
 <div>
-    <button wire:click='createEvent()'>Crear evento</button>
     <button wire:click='showIndex()'>Ver index</button>
     @if ($this->create)
         @livewire('event.create-event')
@@ -33,7 +32,7 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between">
                             <span>Mis eventos</span>
-                            <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%">Agregar
+                            <a wire:click='createEvent()' class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%">Agregar
                                 evento</a>
                         </div>
                     </div>
