@@ -57,6 +57,11 @@
                                                 <span class="text-green">Hora:</span>
                                                 <span>{{$event->time}}</span>
                                             </div>
+                                            <div style="flex-direction: row">
+                                                <i class="fa-regular fa-clock"></i>
+                                                <span class="text-green">Organizador:</span>
+                                                <span>{{$event->Organizer->User->name}}</span>
+                                            </div>
                                         </div>
                                         <div class="card-footer" style="max-height: 80px">
                                             <div>

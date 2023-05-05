@@ -4,10 +4,13 @@
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
-                        <h1 class="page-header-title">
-                            <div class="page-header-icon"><i data-feather="layout"></i></div>
-                            Evento "{{$event->name}}"
-                        </h1>
+                        <div>
+                            <h1 class="page-header-title">
+                                <div class="page-header-icon"><i data-feather="layout"></i></div>
+                                Evento "{{$event->name}}"
+                            </h1>
+                            <Span class="fw-800" style="color: #fff; margin-left: 8px">Organizador: {{$event->Organizer->User->name}}</Span>
+                        </div>
                     </div>
                 </div>
             </div>

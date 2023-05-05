@@ -73,7 +73,7 @@
                 <div style="display: flex; justify-content: space-between">
                     <span>QR del evento:</span>
                     <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%"
-                        wire:click='showEditEvent()'>Descargar</a>
+                    >Descargar</a>
                 </div>
             </div>
             <div class="card-body">

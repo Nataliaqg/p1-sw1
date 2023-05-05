@@ -22,7 +22,9 @@ class IndexLw extends Component
 
         $user = Auth()->user();
 
+        //toda la lista de eventos a la que participe
         $events = Event::select('events.*','event_photographer.event_id as isPhotographer','event_guest.event_id as isGuest')
+                    // tabla           columnas a hacer join
             ->leftjoin('organizers', 'organizers.id', 'events.organizer_id')
             ->leftjoin('event_photographer', 'event_photographer.event_id', 'events.id')
             ->leftjoin('photographers', 'photographers.id', 'event_photographer.photographer_id')
