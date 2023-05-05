@@ -88,7 +88,7 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between">
                             <span>Detalles de cuenta:</span>
-                            <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%">Editar cuenta</a>
+                            <a wire:click='openEditUser()' class="btn btn-sm btn-primary-soft text-primary" style="right: 0%">Editar cuenta</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -154,3 +154,5 @@
     </div>
 
 </div>
+
+

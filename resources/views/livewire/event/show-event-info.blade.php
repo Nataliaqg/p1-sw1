@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="card-body">
-                Hola aqui viene el qr
+                <img src="{{ asset($event->guest_qr_path)}}" alt="">
             </div>
         </div>
     </div>

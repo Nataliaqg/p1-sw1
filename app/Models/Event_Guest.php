@@ -9,7 +9,7 @@ class Event_Guest extends Model
 {
     use HasFactory;
     protected $table='event_guest';
-    protected $fillable = [
+    protected $guarded = [
         'id',
         'created_at',
         'updated_at',

@@ -5,20 +5,25 @@ namespace App\Http\Livewire\User;
 use Livewire\Component;
 
 class IndexLw extends Component
-{
-    public $edit=false;
-    public $show=false;
+{   
+    public $showUser=true;
+    public $showEdit=false;
+
+    protected $listeners = [
+        'openShowUser',
+        'openEditUser'
+    ];
 
     public function render()
     {
         return view('livewire.user.index-lw');
     }
-    public function editUser(){
-        $this->edit=true;
-        $this->show=false;
+    public function openEditUser($showEdit){
+        $this->showUser=false;
+      $this->showEdit=$showEdit;
     }
-    public function showUser(){
-        $this->show=true;
-        $this->edit=false;
+    public function openShowUser($showUser){
+        $this->showEdit=false;
+       $this->showUser=$showUser;
     }
 }

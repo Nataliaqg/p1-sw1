@@ -1,12 +1,9 @@
 <div>
-    <button wire:click='editUser()'>editar usuario</button>
-    <button wire:click='showUser()'>ver usuario</button>
-
-    @if ($this->edit)
+    @if ($this->showEdit)
         @livewire('user.edit-user')
     @endif
 
-    @if ($this->show)
+    @if ($this->showUser)
         @livewire('user.show-user')
     @endif
 </div>

@@ -137,7 +137,7 @@
             <div class="col-xl-8">
                 <!-- Account details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Detalles de mi cuenta</div>
+                    <div class="card-header">Editar Detalles de mi cuenta:</div>
                     <div class="card-body">
                         <form>
                             <form method="POST" action="{{ route('register') }}">
@@ -248,9 +248,13 @@
                                 </div>
                             </form>
                             <!-- Save changes button-->
+                           <div style=" display: flex;flex-direction: row; justify-content: space-between">
+                            <button class="btn btn-primary" wire:click='openShowUser()'
+                            type="button">Volver Atras</button>
                             <button id="modalButton" class="btn btn-primary" wire:click='update()'
-                                type="button">Guardar
-                                cambios</button>
+                            type="button">Guardar
+                            cambios</button>
+                           </div>
                         </form>
                     </div>
                 </div>
@@ -259,3 +263,4 @@
     </div>
     
 </div>
+

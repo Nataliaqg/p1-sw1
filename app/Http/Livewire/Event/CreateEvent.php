@@ -4,9 +4,11 @@ namespace App\Http\Livewire\Event;
 
 use Livewire\Component;
 use App\Models\Event;
+use App\Traits\QrTrait;
 
 class CreateEvent extends Component
 {
+    use QrTrait;
     public $event = [];
 
     public function render()
@@ -16,6 +18,7 @@ class CreateEvent extends Component
     public function store()
     {
         
+       
         $this->validate([
             'event.name' => ['required'],
             'event.date' => ['required'],
@@ -29,12 +32,16 @@ class CreateEvent extends Component
             //no esta suscrito como organizador
             return;
         }
-
         $this->event['organizer_id'] = $user->Organizer->id;
-
         $newEvent = Event::create(
             $this->event
         );
+
+        $url=$this->generateQr('http://127.0.0.1:8000/event/invitation/'.$newEvent->id);
+        $newEvent->update([
+            'guest_qr_path'=>$url
+        ]);
+
         $this->openModal();
     }
 

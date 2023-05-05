@@ -80,11 +80,17 @@ class EditUser extends Component
         $user->save();
         $this->user=$user->toArray();
         $this->openModal();
+        //$this->openShowUser();
     }
 
     public function openModal(){
         $action='Editar usuario';
         $message='La informacion del usuario ha sido actualizada exitosamente';
         $this->emit('openModal',$action,$message);
+    }
+
+    public function openShowUser(){
+        $showUser=true;
+        $this->emit('openShowUser',$showUser);
     }
 }

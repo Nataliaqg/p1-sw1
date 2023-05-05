@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventPhotographerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SaaSView;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +20,10 @@ use Illuminate\Support\Facades\Auth;
 */
 Auth::routes();
 
+Route::get('/snapMatch',[SaaSView::class,'index'])->name('snapMatch.index');
+
 Route::get('/', function () {
-    return redirect(route('login'));
+    return redirect(route('snapMatch.index'));
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -32,7 +35,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
-    Route::get('/event',[EventController::class,'index'])->name('event.index');
+
+    Route::group(['prefix'=>'event'],function(){
+        Route::get('/index',[EventController::class,'index'])->name('event.index');
+        Route::get('/invitation/{event_id}',[EventController::class,'acceptInvitation'])->name('event.invitation');
+        Route::get('/show/{event_id}',[EventController::class,'show'])->name('event.show');
+    });
+    
 });
 
 

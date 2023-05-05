@@ -2,7 +2,7 @@
     id="sidenavAccordion">
     <!-- Sidenav Toggle Button-->
     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
-    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="{{ url('/') }}"><i class="fa-solid fa-camera-retro"></i> SnapMatch !</a>
+    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="{{ route('snapMatch.index') }}"><i class="fa-solid fa-camera-retro"></i> SnapMatch !</a>
     </form>
     <!-- Navbar Items-->
     <ul class="navbar-nav align-items-center ms-auto">
@@ -26,12 +26,12 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{route('user.index')}}">
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                        Account
+                        Cuenta
                     </a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                        Logout
+                        Cerrar sesion
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

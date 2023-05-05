@@ -16,8 +16,12 @@ class ShowUser extends Component
     }
     public function render()
     {
-        //dd($this->user);
         return view('livewire.user.show-user');
     }
 
+    public function openEditUser(){
+        $showEdit=true;
+        $this->emit('openEditUser',$showEdit);
+    }
+    
 }
