@@ -5,7 +5,7 @@
     @endif
 
     @if ($this->show)
-        @livewire('event.show-event',['event_id'=>$this->event_id])
+        @livewire('event.show-event', ['event_id' => $this->event_id])
     @endif
     @if ($this->index)
         <main>
@@ -19,7 +19,7 @@
                                     Lista de eventos
                                 </h1>
                                 <div class="page-header-subtitle">Aqui encontraras acceso a la informacion de los
-                                    eventos
+                                    eventos a los que estas relacionado
                                 </div>
                             </div>
                         </div>
@@ -32,112 +32,26 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between">
                             <span>Mis eventos</span>
-                            <a wire:click='createEvent()' class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%">Agregar
+                            <a wire:click='createEvent()' class="btn btn-sm btn-primary-soft text-primary"
+                                href="#!" style="right: 0%">Agregar
                                 evento</a>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary lift bg-danger" wire:click="$emit('showEventList', 'showGuest')">Soy Invitado</button>
+                            <button class="btn btn-primary lift bg-warning" wire:click="$emit('showEventList', 'showOrganizer')">Soy Organizador</button>
+                            <button class="btn btn-primary lift bg-info" wire:click="$emit('showEventList', 'showPhotographer')">Soy Fotografo</button>
+                            {{-- <a class="nav-link disabled" href="#!" tabindex="-1" aria-disabled="true">Disabled</a> --}}
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            @foreach ($events as $event)
-                                <div class="col-md-4">
-                                    <div class="card bg-light mb-4">
-                                        <div class="card-header">
-                                            @if ($event->isPhotographer)
-                                                Fotografo
-                                            @elseif ($event->isGuest)
-                                                Invitado
-                                            @else
-                                                Organizador
-                                            @endif
-                                        </div>
-                                        <div class="card-body" style="height: 150px;">
-                                            <div style="flex-direction: row">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span class="text-green">Nombre:</span>
-                                                <span>{{$event->name}}</span>
-                                            </div>
-                                            <div style="flex-direction: row">
-                                                <i class="fa-regular fa-calendar"></i>
-                                                <span class="text-green">Fecha:</span>
-                                                <span>{{$event->date}}</span>
-                                            </div>
-                                            <div style="flex-direction: row">
-                                                <i class="fa-regular fa-clock"></i>
-                                                <span class="text-green">Hora:</span>
-                                                <span>{{$event->time}}</span>
-                                            </div>
-                                            <div style="flex-direction: row">
-                                                <i class="fa-regular fa-clock"></i>
-                                                <span class="text-green">Organizador:</span>
-                                                <span>{{$event->Organizer->User->name}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer" style="max-height: 80px">
-                                            <div>
-                                                <button wire:click="showEvent('{{$event->id}}')" class="btn btn-outline-warning" type="button"
-                                                    style="float: right">Ver</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                            {{-- CARD1 --}}
-                            {{-- CARD2 --}}
-                            {{-- <div class="col-md-4">
-                                <div class="card bg-light mb-4">
-                                    <div class="card-body" style="height: 150px;">
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-heart"></i>
-                                            <span class="text-green">Nombre:</span>
-                                            <span>Fiesta Tematica</span>
-                                        </div>
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-calendar"></i>
-                                            <span class="text-green">Fecha:</span>
-                                            <span>2023/07/12</span>
-                                        </div>
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-clock"></i>
-                                            <span class="text-green">Hora:</span>
-                                            <span>22:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer" style="max-height: 80px">
-                                        <div>
-                                            <button class="btn btn-outline-warning" type="button"
-                                                style="float: right">Ver</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            {{-- CARD3 --}}
-                            {{-- <div class="col-md-4">
-                                <div class="card bg-light mb-4">
-                                    <div class="card-body" style="height: 150px;">
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-heart"></i>
-                                            <span class="text-green">Nombre:</span>
-                                            <span>Boda Felipe y Maria</span>
-                                        </div>
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-calendar"></i>
-                                            <span class="text-green">Fecha:</span>
-                                            <span>2023/08/02</span>
-                                        </div>
-                                        <div style="flex-direction: row">
-                                            <i class="fa-regular fa-clock"></i>
-                                            <span class="text-green">Hora:</span>
-                                            <span>20:00</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer" style="max-height: 80px">
-                                        <div>
-                                            <button class="btn btn-outline-warning" type="button"
-                                                style="float: right">Ver</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
+                        @if ($componentToShow === 'showGuest')
+                            @livewire('event.index.guest-event')
+                        @elseif ($componentToShow === 'showOrganizer')
+                            @livewire('event.index.organizer-event')
+                        @elseif ($componentToShow === 'showPhotographer')
+                            @livewire('event.index.photographer-event')
+                        @endif
                         </div>
                     </div>
                 </div>

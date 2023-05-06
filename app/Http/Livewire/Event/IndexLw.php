@@ -12,45 +12,22 @@ class IndexLw extends Component
     public $show = false;
     public $index = true;
     public $event_id;
-
+    //mostrar componentes de listas---------------
+    public $componentToShow=null;
     protected $listeners = [
-        'showEvent'
+        'showEvent',
+        'showEventList'
     ];
+    public function showEventList($componentToShow)
+    {
+        $this->componentToShow = $componentToShow;
+    }
+    //--------------------------------------------
 
     public function render()
     {
 
         $user = Auth()->user();
-
-        //toda la lista de eventos a la que participe
-        $events = Event::select('events.*', 'event_photographer.event_id as isPhotographer', 'event_guest.event_id as isGuest')
-            // tabla           columnas a hacer join
-            ->leftjoin('organizers', 'organizers.id', 'events.organizer_id')
-            ->leftjoin('event_photographer', 'event_photographer.event_id', 'events.id')
-            ->leftjoin('photographers', 'photographers.id', 'event_photographer.photographer_id')
-            ->leftjoin('event_guest', 'event_guest.event_id', 'events.id')
-            ->leftjoin('guests', 'guests.id', 'event_guest.guest_id')
-
-            ->where('organizers.user_id', '=', $user->id)
-            ->orWhere('photographers.user_id', '=', $user->id)
-            ->orWhere('guests.user_id', '=', $user->id)
-            ->get();
-        //dd($events);
-
-
-        //eventos donde soy organizador
-        $events2 = Event::select('events.*', 'event_photographer.event_id as isPhotographer', 'event_guest.event_id as isGuest')
-            // tabla           columnas a hacer join
-            ->leftjoin('organizers', 'organizers.id', 'events.organizer_id')
-            ->leftjoin('event_photographer', 'event_photographer.event_id', 'events.id')
-            ->leftjoin('photographers', 'photographers.id', 'event_photographer.photographer_id')
-            ->leftjoin('event_guest', 'event_guest.event_id', 'events.id')
-            ->leftjoin('guests', 'guests.id', 'event_guest.guest_id')
-
-            ->where('organizers.user_id', '=', $user->id)
-            ->get();
-        //dd($events2);
-
         $guest=$user->Guest;
         $photographer=$user->Photographer;
         $organizer=$user->Organizer;
@@ -60,7 +37,7 @@ class IndexLw extends Component
         $eventsOrganizer=$organizer->Events;
 
         //eventos donde soy fotografo
-        return view('livewire.event.index-lw', compact('events'));
+        return view('livewire.event.index-lw');
     }
 
     public function showIndex()
