@@ -37,7 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 
     Route::group(['prefix'=>'event'],function(){
-        Route::get('/index',[EventController::class,'index'])->name('event.index');
+        Route::get('/',[EventController::class,'index'])->name('event.index');
         Route::get('/invitation/{event_id}',[EventController::class,'acceptInvitation'])->name('event.invitation');
         Route::get('/show/{event_id}',[EventController::class,'show'])->name('event.show');
     });

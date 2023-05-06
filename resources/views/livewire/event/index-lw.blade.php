@@ -41,6 +41,15 @@
                             @foreach ($events as $event)
                                 <div class="col-md-4">
                                     <div class="card bg-light mb-4">
+                                        <div class="card-header">
+                                            @if ($event->isPhotographer)
+                                                Fotografo
+                                            @elseif ($event->isGuest)
+                                                Invitado
+                                            @else
+                                                Organizador
+                                            @endif
+                                        </div>
                                         <div class="card-body" style="height: 150px;">
                                             <div style="flex-direction: row">
                                                 <i class="fa-regular fa-heart"></i>
