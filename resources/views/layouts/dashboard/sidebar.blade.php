@@ -3,8 +3,16 @@
         <nav class="sidenav shadow-right sidenav-light">
             <div class="sidenav-menu">
                 <div class="nav accordion" id="accordionSidenav">
+                    {{-- HOME --}}
+                    <div style="margin-top: 10px">
+                        <a class="nav-link collapsed">
+                            <div class="nav-link-icon" ><i data-feather="home"></i></div>
+                            Home
+                        </a>
+                    </div>
                     <!-- MODULO 1-->
-                    <div class="sidenav-menu-heading">Title 1</div>
+                    {{-- <div class="sidenav-menu-heading">Title 1</div> --}}
+                   <div style="margin-top: 10px">
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
                         <div class="nav-link-icon"><i data-feather="activity"></i></div>
                         Menu 1
@@ -19,8 +27,10 @@
                             <a class="nav-link" href="dashboard-3.html">Vista 3</a>
                         </nav>
                     </div>  
+                   </div>
                     <!-- MODULO 2-->
-                    <div class="sidenav-menu-heading">Title 2</div>
+                    {{-- <div class="sidenav-menu-heading">Title 2</div> --}}
+                   <div style="margin-top: 10px">
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                         <div class="nav-link-icon"><i data-feather="grid"></i></div>
                         Menu 2
@@ -39,23 +49,26 @@
                             </a>
                         </nav>
                     </div>
+                   </div>
                     <!-- MODULO 3-->
-                    <div class="sidenav-menu-heading">Title 3</div>
-                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="nav-link-icon"><i data-feather="layout"></i></div>
-                        Menu 3
-                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
-                         <a class="nav-link" href="dashboard-1.html">
-                            Vista 1
+                    {{-- <div class="sidenav-menu-heading">Title 3</div> --}}
+                    <div style="margin-top: 10px">
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                            Menu 3
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a class="nav-link" href="dashboard-1.html">
-                            Vista 2
-                        </a>
-                        <a class="nav-link" href="dashboard-1.html">
-                            Vista 3
-                        </a>
+                        <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
+                             <a class="nav-link" href="dashboard-1.html">
+                                Vista 1
+                            </a>
+                            <a class="nav-link" href="dashboard-1.html">
+                                Vista 2
+                            </a>
+                            <a class="nav-link" href="dashboard-1.html">
+                                Vista 3
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,19 +85,6 @@
     </div>
     <div id="layoutSidenav_content">
         <main>
-
-            
-            {{-- Container azul --}}
-            {{-- <header class="py-10 mb-4 bg-gradient-primary-to-secondary">
-                <div class="container-xl px-4">
-                    <div class="text-center">
-                        <h1 class="text-white">Bienvenido a SnapMatch !</h1>
-                        <p class="lead mb-0 text-white-50">"La mejor manera de revivir tus eventos favoritos"</p>
-                    </div>
-                </div>
-            </header> --}}
-
-            <!-- Contenido principal del dashboard-->
             <div class="container-xl px-4">
                @yield('sidebar_content')
             </div>

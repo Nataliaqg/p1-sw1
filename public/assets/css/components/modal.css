@@ -3,10 +3,12 @@
     opacity: 1;
     background: rgba(39, 39, 39, 0.705);
     padding: 5%;
+    z-index: 1;
   }
   
   .modal-lg {
-    max-width: 500px;
+    max-width: 800px;
+    max-height: 1000px;
   }
   
   .close {

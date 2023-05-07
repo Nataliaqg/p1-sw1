@@ -17,6 +17,7 @@ class CreatePhotographiesTable extends Migration
             $table->id();
             $table->string('status');
             $table->decimal('price',12,2);
+            $table->string('url_path');
             $table->unsignedBigInteger('photographer_id');
             $table->foreign('photographer_id')->references('id')->on('photographers')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('event_id');

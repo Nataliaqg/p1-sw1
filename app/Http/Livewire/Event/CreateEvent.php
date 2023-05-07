@@ -12,14 +12,11 @@ class CreateEvent extends Component
     public $event = [];
     public $newEvent_id;
 
-    public function render()
-    {
+    public function render(){
         return view('livewire.event.create-event');
     }
-    public function store()
-    {
-        
-       
+
+    public function store(){
         $this->validate([
             'event.name' => ['required'],
             'event.date' => ['required'],
@@ -42,9 +39,8 @@ class CreateEvent extends Component
         $newEvent->update([
             'guest_qr_path'=>$url
         ]);
-
-        $this->openModal();
         $this->showEvent();
+        $this->openModal();
     }
 
     public function openModal(){

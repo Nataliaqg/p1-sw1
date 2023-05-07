@@ -16,7 +16,7 @@ class Photography extends Model
     ];
 
     public function Photographer(){
-        return $this->belongsTo(Photography::class,'photography_id');
+        return $this->belongsTo(Photographer::class,'photographer_id');
     }
 
     public function Event(){

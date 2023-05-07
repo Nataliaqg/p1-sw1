@@ -27,6 +27,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::get('/eventPhotographer', [EventPhotographerController::class, 'index'])->name('eventPhotographer.index');
@@ -34,7 +35,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/faceid', [EventPhotographerController::class, 'faceid'])->name('faceid.index');
 
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
-
 
     Route::group(['prefix'=>'event'],function(){
         Route::get('/',[EventController::class,'index'])->name('event.index');
