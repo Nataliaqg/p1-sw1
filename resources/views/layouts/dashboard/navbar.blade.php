@@ -10,6 +10,8 @@
         @auth 
             {{-- Componentes notificacion --}}
             @livewire('components.notification')
+             {{-- Componentes carrito --}}
+             @livewire('components.cart')
             <!-- User Dropdown-->
             <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
