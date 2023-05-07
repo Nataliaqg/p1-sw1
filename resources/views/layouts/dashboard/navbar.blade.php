@@ -15,11 +15,11 @@
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
                     href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="true"><img class="img-fluid"
-                        src={{ asset('assets/img/illustrations/profiles/profile-1.png') }} /></a>
+                        src="@if (Auth::user()->photo_path1) {{ asset(Auth::user()->photo_path1) }} @else {{ asset('assets/img/illustrations/profiles/profile-1.png') }} @endif" /></a>
                 <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
                     aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
-                        <img class="dropdown-user-img" src={{ asset('assets/img/illustrations/profiles/profile-1.png') }} />
+                        <img class="dropdown-user-img" src="@if (Auth::user()->photo_path1) {{ asset(Auth::user()->photo_path1) }} @else {{ asset('assets/img/illustrations/profiles/profile-1.png') }} @endif" />
                         <div class="dropdown-user-details">
                             <div class="dropdown-user-details-name">{{Auth::user()->name}}</div>
                             <div class="dropdown-user-details-email">{{Auth::user()->email}}</div>
@@ -28,7 +28,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{route('user.index')}}">
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                        Cuenta
+                        Configuracion del Perfil
                     </a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
