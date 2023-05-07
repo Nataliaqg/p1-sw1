@@ -27,14 +27,14 @@ class IndexLw extends Component
     public function render()
     {
 
-        $user = Auth()->user();
-        $guest=$user->Guest;
-        $photographer=$user->Photographer;
-        $organizer=$user->Organizer;
+        // $user = Auth()->user();
+        // $guest=$user->Guest;
+        // $photographer=$user->Photographer;
+        // $organizer=$user->Organizer;
 
-        $eventsGuest=$guest->Events;
-        $eventsPhotographer=$photographer->Events;
-        $eventsOrganizer=$organizer->Events;
+        // $eventsGuest=$guest->Events;
+        // $eventsPhotographer=$photographer->Events;
+        // $eventsOrganizer=$organizer->Events;
 
         //eventos donde soy fotografo
         return view('livewire.event.index-lw');

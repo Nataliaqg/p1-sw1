@@ -1,5 +1,4 @@
 <div>
-    <button wire:click='showIndex()'>Ver index</button>
     @if ($this->create)
         @livewire('event.create-event')
     @endif
@@ -32,14 +31,22 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between">
                             <span>Mis eventos</span>
+                            @can('event.create')
                             <a wire:click='createEvent()' class="btn btn-sm btn-primary-soft text-primary"
-                                href="#!" style="right: 0%">Agregar
-                                evento</a>
+                            style="right: 0%">Agregar
+                            evento</a>
+                            @endcan
                         </div>
                         <div>
+                            @can('event.guestEvents')
                             <button class="btn btn-primary lift bg-danger" wire:click="$emit('showEventList', 'showGuest')">Soy Invitado</button>
+                            @endcan
+                            @can('event.organizerEvents')
                             <button class="btn btn-primary lift bg-warning" wire:click="$emit('showEventList', 'showOrganizer')">Soy Organizador</button>
+                            @endcan
+                            @can('event.photographerEvents')
                             <button class="btn btn-primary lift bg-info" wire:click="$emit('showEventList', 'showPhotographer')">Soy Fotografo</button>
+                            @endcan
                             {{-- <a class="nav-link disabled" href="#!" tabindex="-1" aria-disabled="true">Disabled</a> --}}
                         </div>
                     </div>

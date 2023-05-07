@@ -1,11 +1,17 @@
 <div class="card" style="margin-top: 20px !important">
     <div class="card-header">
+       
         <div style="display: flex; justify-content: space-between">
             <span>Fotografos del evento:</span>
+            @can('event.addPhotographer')
             <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%">Agregar fotografo</a>
+            @endcan
         </div>
     </div>
     <div class="card-body">
+        @if($photographers->isEmpty())
+        <span>Aun no tienes fotografos designados para este evento</span>
+        @else
         {{-- Fotografo --}}
         @foreach ($photographers as $photographer)
             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -27,5 +33,6 @@
                 </div>
             </div>
         @endforeach
+        @endif
     </div>
 </div>

@@ -9,8 +9,10 @@
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between">
                         <span>Detalle del evento:</span>
+                        @can('event.edit')
                         <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%"
-                            wire:click='showEditEvent()'>Editar evento</a>
+                        wire:click='showEditEvent()'>Editar evento</a>
+                        @endcan
                     </div>
                 </div>
                 <div class="card-body">
@@ -66,7 +68,9 @@
                     </div>
                 </div>
             </div>
-            {{-- card del qr --}}
+
+            @can('event.showQr')
+                 {{-- card del qr --}}
             <div class="card" style="margin-top: 20px !important ;width: 30%">
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between">
@@ -79,6 +83,7 @@
                     <img src="{{ asset($event->guest_qr_path) }}" alt="" style="width: 100%; height: 100%;">
                 </div>
             </div>
+            @endcan
         </div>
         <script>
             const downloadButton = document.getElementById('btn-download');
