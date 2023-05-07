@@ -12,6 +12,11 @@ class ShowEventPhotography extends Component
     public function mount($event_id){
         $this->event_id=$event_id;
     }
+
+    protected $listeners = [
+        'refresh',
+    ];
+
     public function render()
     {
         $event=Event::find($this->event_id);
@@ -21,5 +26,8 @@ class ShowEventPhotography extends Component
 
     public function openModal2(){
         $this->emit('openModal');
+    }
+    public function refresh(){
+        $this->render();
     }
 }

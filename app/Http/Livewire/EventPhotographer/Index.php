@@ -48,6 +48,7 @@ class Index extends Component
             'event_id'=>$this->event_id,
             'photographer_id'=>$photographer->id
         ]);
+        $this->closeModal();
     }
 
     public function upload()
@@ -69,5 +70,6 @@ class Index extends Component
     }
     public function closeModal(){
         $this->openModal=false;
+        $this->emit('refresh');
     }
 }

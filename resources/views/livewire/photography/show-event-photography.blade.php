@@ -16,7 +16,7 @@
             @else
                 @foreach ($images as $image)
                     {{-- Foto --}}
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="{{$image->id}}">
                         <div class="card bg-light mb-4">
                             <div class="card-body" style="height: 350px;">
                                 <img style="width: 100%; height: 100%;" src="{{ asset($image->url_path) }}"
@@ -31,6 +31,7 @@
                                     <span>Precio:</span>
                                     <span>{{ $image->price }}</span>
                                 </div>
+                                <button onClick="click()">Añadir al carrito</button>
                             </div>
                         </div>
                     </div>
@@ -74,4 +75,9 @@
         </div>
 
     </div>
+    <script >
+        function click(id){
+            console.log("fotografia: ",id)
+        }
+    </script>
 </div>
