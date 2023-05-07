@@ -11,7 +11,9 @@ class Index extends Component
     public function __construct()
     {
         $user = Auth()->user();
-        $this->user = User::find($user->id)->toArray();
+        $this->user = User::find($user->id);
+        $isPhotographer=$this->user->Photographer;
+        //dd($isPhotographer);
     }
     public function render()
     {

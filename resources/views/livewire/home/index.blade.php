@@ -15,13 +15,21 @@
         </div>
     </header>
     <!-- Main page content-->
-    <div class="container-xl px-4 mt-n10" style="width: 50%">
+    <div class="container-xl px-4 mt-n10" style="width: 100%">
         <div class="card">
-            <div class="card-header">Suscripcion:</div>
+            <div class="card-header">Suscripciones disponibles:</div>
             <div class="card-body" style="padding: revert">
-                {{-- @livewire('subscription.guest-content') --}}
-                {{-- @livewire('subscription.organizer-content') --}}
-                {{-- Contenido de las cards de suscripciones dependiendo del rol--}}
+                <div class="row">
+                    <div class="col-md-4">
+                        @livewire('subscription.guest-content')
+                    </div>
+                    <div class="col-md-4">
+                        @livewire('subscription.organizer-content')
+                    </div>
+                    <div class="col-md-4">
+                        @livewire('subscription.photographer-content')
+                    </div>
+                </div>
             </div>
         </div>
     </div>

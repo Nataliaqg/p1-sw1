@@ -26,6 +26,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=>'event.addPhotographer'])->syncRoles([$role2]);
 
         //permisos FOTOGRAFO
+        Permission::create(['name'=>'dashboard.photographerRequest'])->syncRoles([$role3]);
         Permission::create(['name'=>'event.photographerEvents'])->syncRoles([$role3]);
         Permission::create(['name'=>'event.addPhotography'])->syncRoles([$role3]);
 

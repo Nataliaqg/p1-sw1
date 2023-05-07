@@ -37,6 +37,7 @@
                         </a>
                     </div>
                     <!-- MODULO 3-->
+                    @can('dashboard.photographerRequest')
                     <div >
                         <a class="nav-link collapsed">
                             {{-- <div class="nav-link-icon" ><i data-feather="home"></i></div> --}}
@@ -47,6 +48,8 @@
 
                         </a>
                     </div>
+                    @endcan
+                    
                     {{-- <div class="sidenav-menu-heading">Title 3</div> --}}
                     {{-- <div style="margin-top: 10px">
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
