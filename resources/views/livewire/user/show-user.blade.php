@@ -88,62 +88,79 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between">
                             <span>Detalles de cuenta:</span>
-                            <a wire:click='openEditUser()' class="btn btn-sm btn-primary-soft text-primary" style="right: 0%">Editar cuenta</a>
+                            <a wire:click='openEditUser()' class="btn btn-sm btn-primary-soft text-primary"
+                                style="right: 0%">Editar cuenta</a>
                         </div>
                     </div>
                     <div class="card-body">
                         {{-- Nombre --}}
                         <div class="row mb-3">
-                            <label 
-                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Nombre:') }}</label>
+                            <label class="col-md-4 col-form-label text-success"
+                                style="width: 26%">{{ __('Nombre:') }}</label>
                             <div class="col-md-6 border" style="display: flex; align-items: center">
                                 <span>{{ $user['name'] }}</span>
                             </div>
                         </div>
+                        @if ($photographer != null)
+                          {{-- Descripcion --}}
+                          <div class="row mb-3">
+                            <label class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Sobre mi trabajo:') }}</label>
+                            <div class="col-md-6 border" style="display: flex; align-items: center">
+                                <p>{{$photographer->description}}</p>
+                            </div>
+                        </div>
+                          {{-- Precio Servicio --}}
+                          <div class="row mb-3">
+                            <label class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Precio del servicio:') }}</label>
+                            <div class="col-md-6 border" style="display: flex; align-items: center">
+                                <span>{{$photographer->service_price}} bs</span>
+                            </div>
+                        </div>
+                        @endif
 
                         {{-- Carnet --}}
                         <div class="row mb-3">
-                            <label 
-                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Carnet:') }}</label>
+                            <label class="col-md-4 col-form-label text-success"
+                                style="width: 26%">{{ __('Carnet:') }}</label>
                             <div class="col-md-6 border" style="display: flex; align-items: center">
-                                    <span>{{ $user['dni'] }}</span>
+                                <span>{{ $user['dni'] }}</span>
                             </div>
                         </div>
 
                         {{-- Telefono --}}
                         <div class="row mb-3">
-                            <label 
-                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Telefono:') }}</label>
+                            <label class="col-md-4 col-form-label text-success"
+                                style="width: 26%">{{ __('Telefono:') }}</label>
                             <div class="col-md-6 border" style="display: flex; align-items: center">
-                                    <span>{{ $user['phone'] }}</span>
+                                <span>{{ $user['phone'] }}</span>
                             </div>
                         </div>
 
                         {{-- Direccion --}}
                         <div class="row mb-3">
-                            <label 
-                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Direccion:') }}</label>
+                            <label class="col-md-4 col-form-label text-success"
+                                style="width: 26%">{{ __('Direccion:') }}</label>
                             <div class="col-md-6 border" style="display: flex; align-items: center">
-                                    <span>{{ $user['address'] }}</span>
+                                <span>{{ $user['address'] }}</span>
                             </div>
                         </div>
 
                         {{-- Cumple --}}
                         <div class="row mb-3">
-                            <label 
-                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Fecha de nacimiento:') }}</label>
+                            <label class="col-md-4 col-form-label text-success"
+                                style="width: 26%">{{ __('Fecha de nacimiento:') }}</label>
                             <div class="col-md-6 border" style="display: flex; align-items: center">
-                                <span>{{ $user['birthdate'] }}</span> 
+                                <span>{{ $user['birthdate'] }}</span>
                             </div>
                         </div>
 
                         {{-- Email --}}
                         <div class="row mb-3">
-                            <label 
-                                class="col-md-4 col-form-label text-success" style="width: 26%">{{ __('Email:') }}</label>
+                            <label class="col-md-4 col-form-label text-success"
+                                style="width: 26%">{{ __('Email:') }}</label>
                             <div class="col-md-6 border">
                                 <div>
-                                    <span>{{ $user['email'] }}</span> 
+                                    <span>{{ $user['email'] }}</span>
                                 </div>
                             </div>
                         </div>
@@ -154,5 +171,3 @@
     </div>
 
 </div>
-
-

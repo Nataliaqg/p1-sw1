@@ -159,6 +159,44 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                @if ($isPhotographer != null)
+                                    {{-- Descripcion --}}
+                                <div class="row mb-3">
+                                    <label for="description"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Sobre mi trabajo:') }}</label>
+                                    <div class="col-md-6">
+                                        <input id="description" type="text"
+                                            class="form-control @error('user.photographer.description') is-invalid @enderror"
+                                            wire:model.lazy='user.photographer.description'>
+
+                                        @error('user.photographer.description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Precio Servicio --}}
+                                <div class="row mb-3">
+                                    <label for="service_price"
+                                        class="col-md-4 col-form-label text-md-end">{{ __('precio:') }}</label>
+                                    <div class="col-md-6">
+                                        <input id="service_price" type="number"
+                                            class="form-control @error('user.photographer.service_price') is-invalid @enderror"
+                                            wire:model.lazy='user.photographer.service_price'>
+
+                                        @error('user.photographer.service_price')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                @endif
+                                
+
                                 {{-- Carnet --}}
                                 <div class="row mb-3">
                                     <label for="dni"
@@ -248,19 +286,18 @@
                                 </div>
                             </form>
                             <!-- Save changes button-->
-                           <div style=" display: flex;flex-direction: row; justify-content: space-between">
-                            <button class="btn btn-primary" wire:click='openShowUser()'
-                            type="button">Volver Atras</button>
-                            <button id="modalButton" class="btn btn-primary" wire:click='update()'
-                            type="button">Guardar
-                            cambios</button>
-                           </div>
+                            <div style=" display: flex;flex-direction: row; justify-content: space-between">
+                                <button class="btn btn-primary" wire:click='openShowUser()' type="button">Volver
+                                    Atras</button>
+                                <button id="modalButton" class="btn btn-primary" wire:click='update()'
+                                    type="button">Guardar
+                                    cambios</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-</div>
 
+</div>

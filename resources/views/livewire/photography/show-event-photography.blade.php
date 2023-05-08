@@ -25,16 +25,22 @@
                                         alt="">
                                 </div>
                                 <div class="card-footer" style="max-height: 80px">
-                                    <div style="flex-direction: row">
-                                        <span>Fotografo:</span>
-                                        <span>{{ $myimage->Photographer->User->name }}</span>
+                                    <div style="display: flex; flex-direction: row; justify-content: space-between">
+                                        <div>
+                                            <div style="flex-direction: row">
+                                                <span>Fotografo:</span>
+                                                <span>{{ $myimage->Photographer->User->name }}</span>
+                                            </div>
+                                            <div style="flex-direction: row">
+                                                <span>Precio:</span>
+                                                <span>{{ $myimage->price }}</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary" type="button" wire:click="addCart('{{ $myimage->id }}')" style="width: 100px">Añadir al
+                                                carrito</button>
+                                        </div>
                                     </div>
-                                    <div style="flex-direction: row">
-                                        <span>Precio:</span>
-                                        <span>{{ $myimage->price }}</span>
-                                    </div>
-                                    <button type="button" wire:click="addCart('{{ $myimage->id }}')">Añadir al
-                                        carrito</button>
                                 </div>
                             </div>
                         </div>
@@ -51,16 +57,22 @@
                                     alt="">
                             </div>
                             <div class="card-footer" style="max-height: 80px">
-                                <div style="flex-direction: row">
-                                    <span>Fotografo:</span>
-                                    <span>{{ $image->Photographer->User->name }}</span>
+                                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                                    <div>
+                                        <div style="flex-direction: row">
+                                            <span>Fotografo:</span>
+                                            <span>{{ $image->Photographer->User->name }}</span>
+                                        </div>
+                                        <div style="flex-direction: row">
+                                            <span>Precio:</span>
+                                            <span>{{  $image->price }}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary" type="button" wire:click="addCart('{{ $image->id }}')" style="width: 100px">Añadir al
+                                            carrito</button>
+                                    </div>
                                 </div>
-                                <div style="flex-direction: row">
-                                    <span>Precio:</span>
-                                    <span>{{ $image->price }}</span>
-                                </div>
-                                <button type="button" wire:click="addCart('{{ $image->id }}')">Añadir al
-                                    carrito</button>
                             </div>
                         </div>
                     </div>
