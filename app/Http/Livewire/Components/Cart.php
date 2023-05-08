@@ -29,6 +29,9 @@ class Cart extends Component
         }
     }
     
+    public function openPaymentModalPurchase(){
+        $this->emit('openPaymentModal');
+    }
     
     
 }

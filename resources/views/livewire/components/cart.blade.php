@@ -44,7 +44,7 @@
             </div>
             <!-- Footer Link-->
             {{-- <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a> --}}
-            <button class="dropdown-item dropdown-notifications-footer btn btn-primary bg-primary"
+            <button wire:click='openPaymentModalPurchase()' class="dropdown-item dropdown-notifications-footer btn btn-primary bg-primary"
                 style="color:#fff">COMPRAR</button>
         </div>
     </li>
