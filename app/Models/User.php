@@ -66,4 +66,9 @@ class User extends Authenticatable
     public function Organizer(){
         return $this->hasOne(Organizer::class,'user_id');
     }
+
+    public function Photographies()
+    {
+        return $this->belongsToMany(Photography::class, 'user_photography');
+    }
 }

@@ -19,4 +19,8 @@ class ShowEventPhotographer extends Component
         $photographers=$event->Photographers;
         return view('livewire.event-photographer.show-event-photographer',compact('photographers'));
     }
+
+    public function openModalShowPhotographer(){
+        $this->emit('openModalShowPhotographer');
+    }
 }

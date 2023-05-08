@@ -43,7 +43,7 @@
                             {{-- <div class="nav-link-icon" ><i data-feather="home"></i></div> --}}
                             <div style="display: flex; flex-direction: row; border: solid gainsboro;">
                                 <i data-feather="home"></i>
-                                <a class="nav-link" href="dashboard-2.html">MIS SOLICITUDES</a>
+                                <a class="nav-link" href="{{route('request.index')}}" >MIS SOLICITUDES</a>
                             </div>
 
                         </a>
