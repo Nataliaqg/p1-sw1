@@ -31,7 +31,7 @@
                             {{-- <div class="nav-link-icon" ><i data-feather="home"></i></div> --}}
                             <div style="display: flex; flex-direction: row; border: solid gainsboro;">
                                 <i data-feather="home"></i>
-                                <a class="nav-link" href="dashboard-2.html">MIS COMPRAS</a>
+                                <a class="nav-link" href="{{route('purchase.index')}}">MIS COMPRAS</a>
                             </div>
 
                         </a>

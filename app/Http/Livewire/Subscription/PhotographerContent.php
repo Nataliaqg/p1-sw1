@@ -10,4 +10,7 @@ class PhotographerContent extends Component
     {
         return view('livewire.subscription.photographer-content');
     }
+    public function openPaymentModal(){
+        $this->emit('openPaymentModal');
+    }
 }

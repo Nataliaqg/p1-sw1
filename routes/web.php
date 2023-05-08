@@ -5,6 +5,7 @@ use App\Http\Controllers\EventPhotographerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SaaSView;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPhotographyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\EventPhotographer\RequestEventPhotographer;
@@ -44,6 +45,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/request', [EventPhotographerController::class, 'request'])->name('request.index');
 
+    Route::get('/purchase', [UserPhotographyController::class, 'index'])->name('purchase.index');
     
 });
 
