@@ -4,8 +4,8 @@
             <span class="badge bg-secondary-soft text-secondary rounded-pill py-2 px-3 mb-2 fw-800">ORGANIZADOR</span>
             <div style="display: flex; flex-direction: row; justify-content: space-between">
                 <div class="pricing-columns-price">
-                    $10
-                    <span>/month</span>
+                    {{$total}} bs
+                    <span>/mes</span>
                 </div>
                 <a wire:click='openPaymentModalOrganizer()' class="btn btn-sm btn-primary-soft text-primary">COMPRAR</a>
             </div>  

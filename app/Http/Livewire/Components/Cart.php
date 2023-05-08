@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Cart extends Component
 {
+    public $totalPurchase;
     public $items=[];
     protected $listeners = [
         'addCart',
@@ -15,6 +16,7 @@ class Cart extends Component
     {
         $images=Photography::whereIn('id',$this->items)->get();
         $total=$images->Sum('price');
+        $this->totalPurchase=$total;
         return view('livewire.components.cart',compact('images','total'));
     }
     public function addCart($id){
@@ -29,9 +31,15 @@ class Cart extends Component
         }
     }
     
+  
     public function openPaymentModalPurchase(){
-        $this->emit('openPaymentModal');
+        $emitCallback="acceptPaymentPurchase";
+        $this->emit('openPaymentModal',$this->totalPurchase,$emitCallback);
     }
-    
+    public function acceptPaymentPurchase(){
+        // $user=User::find(Auth()->user()->id);
+        // $user->assignRole('Organizador');
+        // $user->save();
+    }
     
 }

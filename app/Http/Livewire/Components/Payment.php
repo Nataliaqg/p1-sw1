@@ -10,7 +10,7 @@ class Payment extends Component
     protected $listeners = [
         'openPaymentModal',
     ];
-    public $price;
+    public $total;
     public $emit;
 
     public function render()
@@ -18,8 +18,8 @@ class Payment extends Component
         return view('livewire.components.payment');
     }
 
-    public function openPaymentModal($price,$emitCallback){
-        $this->price=$price;
+    public function openPaymentModal($total,$emitCallback){
+        $this->total=$total;
         $this->emit=$emitCallback;
         $this->openPaymentModal=true;
     }

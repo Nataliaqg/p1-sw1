@@ -46,7 +46,7 @@
                             </div>
                             <div>
                                 <button wire:click='accept' class="btn btn-dark" type="button" style="margin-top: 15px; width: 100%">PAGAR
-                                    {{$this->price}} bs</button>
+                                    {{$this->total}} bs</button>
                             </div>
                         </div>
 
