@@ -10,4 +10,8 @@ class OrganizerContent extends Component
     {
         return view('livewire.subscription.organizer-content');
     }
+
+    public function openPaymentModal(){
+        $this->emit('openPaymentModal');
+    }
 }
