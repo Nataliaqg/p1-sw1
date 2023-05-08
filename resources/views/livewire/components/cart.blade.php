@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </a>
-            {{-- TOTAL --}}
+            TOTAL
             <div class="dropdown-item dropdown-notifications-item">
                 <div style="display: flex; flex-direction: row">
                     <div class="dropdown-notifications-item-content-text">TOTAL:</div>

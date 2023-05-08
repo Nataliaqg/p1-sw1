@@ -15,8 +15,6 @@ class Index extends Component
     use WithFileUploads;
     public $photography;
     public $openModal;
-    public $action;
-    public $message;
     public $event_id;
     //
     public $eventPhotographies=[];
