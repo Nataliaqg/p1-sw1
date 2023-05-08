@@ -31,6 +31,7 @@
 </head>
 
 <body class="nav-fixed">
+    @livewire('components.payment')
     {{-- Navbar --}}
     @include('layouts.dashboard.navbar')
     {{-- Sidebar --}}
