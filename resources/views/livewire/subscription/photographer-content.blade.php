@@ -1,4 +1,5 @@
 <div>
+    @livewire('components.payment')
     <div class="card h-100">
         <div class="card-header bg-transparent">
             <span class="badge bg-secondary-soft text-secondary rounded-pill py-2 px-3 mb-2 fw-800">FOTOGRAFO</span>
@@ -7,7 +8,7 @@
                     $15
                     <span>/month</span>
                 </div>
-                <a class="btn btn-sm btn-primary-soft text-primary" href="#!">COMPRAR</a>
+                <a wire:click='openPaymentModal()' class="btn btn-sm btn-primary-soft text-primary">COMPRAR</a>
             </div>  
         </div>
         <div class="card-body p-0">
