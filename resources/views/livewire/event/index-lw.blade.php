@@ -1,4 +1,7 @@
 <div>
+    {{-- FACEID --}}
+    @livewire('faceid.test')
+    
     @if ($this->create)
         @livewire('event.create-event')
     @endif

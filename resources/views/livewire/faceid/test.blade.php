@@ -1,116 +1,170 @@
 <div>
-    <input type="file" name="imagen[]" id="imagen">
-    <button onclick="start()">test faceid</button>
-
-    <div>
-        <h3>Imagen seleccionada:</h3>
-        <img id="inputImg" src="" width="300" height="auto">
-        <canvas id="overlay" width="300" height="auto"></canvas>
-    </div>
-
     <script src="{{ asset('js/face-api.min.js') }}" type="text/javascript"></script>
     <script>
-        const imageUpload = document.getElementById('imagen')
+        document.addEventListener('livewire:load', function() {
+            Livewire.on('face-api', function(usuarios, photography) {
+                console.log("recognize:", usuarios)
+                console.log("image:", photography)
+                //cargo los modelos de FACEAPI cuanndo la funcion start comience
+                Promise.all([
+                    faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
+                    faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
+                    faceapi.nets.ssdMobilenetv1.loadFromUri('/models'),
+                    console.log("loaded models faceid")
+                ]).then(start)
 
-        //cargo los modelos de FACEAPI cuanndo la funcion start comience
-        Promise.all([
-            faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-            faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-            faceapi.nets.ssdMobilenetv1.loadFromUri('/models'),
-            console.log("loaded models faceid")
-        ])
+                function loadLabeledImages() {
+                    return Promise.all(
+                        usuarios.map(async user => {
+                            const descriptions = [];
+                            const images = user.images;
+                            for (let i = 0; i < images.length; i++) {
+                                const img = await faceapi.fetchImage(images[i]);
+                                const detections = await faceapi.detectSingleFace(img)
+                                    .withFaceLandmarks()
+                                    .withFaceDescriptor();
+                                descriptions.push(detections.descriptor);
+                            }
+                            return new faceapi.LabeledFaceDescriptors(user.id.toString(),
+                                descriptions);
+                        })
+                    )
+                }
 
-        async function loadLabeledImages() {
-            const result = [];
+                async function start() {
 
-            let label = 'Daniel';
-            const descriptions = [];
-            const img = await faceapi.fetchImage(`/img/daniel.png`);
-            const detections = await faceapi.detectSingleFace(img).withFaceLandmarks()
-                .withFaceDescriptor();
-            descriptions.push(detections.descriptor);
+                    //obtengo los id de las caras de las imagenes de los usuarios
+                    const labeledFaceDescriptors = await loadLabeledImages();
+                    //console.log(labeledFaceDescriptors)
 
-            result.push(new faceapi.LabeledFaceDescriptors(label, descriptions))
+                    //que tenga una presicion arriba de 60%
+                    const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6);
+                    console.log('Listo');
 
-            let label2 = 'Natalia';
-            const descriptions2 = [];
-            const img2 = await faceapi.fetchImage(`/img/natalia.jpg`);
-            const detections2 = await faceapi.detectSingleFace(img2).withFaceLandmarks()
-                .withFaceDescriptor();
-            descriptions2.push(detections2.descriptor);
+                    //obtengo la imagen subida en el input
+                    const image = await faceapi.fetchImage(photography.url_path);
+                    const displaySize = {
+                        width: image.width,
+                        height: image.height
+                    };
+                    //detecta todas las caras de la imagagen del input
+                    const detections = await faceapi.detectAllFaces(image)
+                        .withFaceLandmarks()
+                        .withFaceDescriptors();
 
-            result.push(new faceapi.LabeledFaceDescriptors(label2, descriptions2))
+                    const resizedDetections = faceapi.resizeResults(detections,
+                        displaySize);
 
-            return result;
-        }
+                    //las coincidencias
+                    const results = resizedDetections.map(d => faceMatcher
+                        .findBestMatch(d
+                            .descriptor));
 
-        async function start() {
-            console.log("function start")
-            //obtengo los nombres de las caras de las imagenes del servidor
-            const labeledFaceDescriptors = await loadLabeledImages();
-            console.log(labeledFaceDescriptors);
+                    idusuarios = []
+                    for (j = 0; j < results.length; j++) {
+                        idusuarios.push(results[j].label);
+                    };
+                    console.log(idusuarios);
+                    Livewire.emit('setNotifications', idusuarios, photography.id);
+                }
 
-            //que tenga una presicion arriba de 60%
-            const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6);
-            console.log(faceMatcher);
+            });
+        });
 
-            console.log('Listo');
 
-            resultados = [];
-            for (i = 0; i < imageUpload.files.length; i++) {
-                image = await faceapi.bufferToImage(imageUpload.files[i]);
-                const displaySize = {
-                    width: image.width,
-                    height: image.height
-                };
-                //detecta todas las caras de la imagagen del input
-                const detections = await faceapi.detectAllFaces(image).withFaceLandmarks()
-                    .withFaceDescriptors();
 
-                const resizedDetections = faceapi.resizeResults(detections, displaySize);
+        // async function loadLabeledImages() {
+        //     const result = [];
 
-                //las coincidencias
-                const results = resizedDetections.map(d => faceMatcher.findBestMatch(d
-                    .descriptor));
+        //     let label = 'Daniel';
+        //     const descriptions = [];
+        //     const img = await faceapi.fetchImage(`/img/daniel.png`);
+        //     const detections = await faceapi.detectSingleFace(img).withFaceLandmarks()
+        //         .withFaceDescriptor();
+        //     descriptions.push(detections.descriptor);
 
-                resultados.push(results);
+        //     result.push(new faceapi.LabeledFaceDescriptors(label, descriptions))
 
-                console.log("resizedDetections", resizedDetections)
-                console.log("findBestMatch", results)
+        //     let label2 = 'Natalia';
+        //     const descriptions2 = [];
+        //     const img2 = await faceapi.fetchImage(`/img/natalia.jpg`);
+        //     const detections2 = await faceapi.detectSingleFace(img2).withFaceLandmarks()
+        //         .withFaceDescriptor();
+        //     descriptions2.push(detections2.descriptor);
 
-                const inputImg = document.getElementById('inputImg');
-                inputImg.src = URL.createObjectURL(imageUpload.files[i]);
-                const canvas = document.getElementById('overlay');
-                const ctx = canvas.getContext('2d');
-                canvas.width = image.width;
-                canvas.height = image.height;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        //     result.push(new faceapi.LabeledFaceDescriptors(label2, descriptions2))
 
-                // // muestra la imagen seleccionada
-                // const inputImg = document.getElementById('inputImg');
-                // inputImg.src = URL.createObjectURL(imageUpload.files[0]);
+        //     return result;
+        // }
 
-                // // dibuja en el canvas
-                // const canvas = document.getElementById('overlay');
-                // const ctx = canvas.getContext('2d');
-                // canvas.width = image.width;
-                // canvas.height = image.height;
-                // ctx.clearRect(0, 0, canvas.width, canvas.height);
-                // ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        // async function start() {
+        //     console.log("function start")
+        //     //obtengo los nombres de las caras de las imagenes del servidor
+        //     const labeledFaceDescriptors = await loadLabeledImages();
+        //     console.log(labeledFaceDescriptors);
 
-                // // dibuja el cuadro alrededor de la cara reconocida
-                // resizedDetections.forEach((result, i) => {
-                //     const box = result.detection.box;
-                //     const drawBox = new faceapi.draw.DrawBox(box, {
-                //         label: result.toString()
-                //     });
-                //     drawBox.draw(canvas);
-                // });
+        //     //que tenga una presicion arriba de 60%
+        //     const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6);
+        //     console.log(faceMatcher);
 
-            }
-            console.log(resultados);
+        //     console.log('Listo');
 
-        }
+        //     resultados = [];
+        //     for (i = 0; i < imageUpload.files.length; i++) {
+        //         image = await faceapi.bufferToImage(imageUpload.files[i]);
+        //         const displaySize = {
+        //             width: image.width,
+        //             height: image.height
+        //         };
+        //         //detecta todas las caras de la imagagen del input
+        //         const detections = await faceapi.detectAllFaces(image).withFaceLandmarks()
+        //             .withFaceDescriptors();
+
+        //         const resizedDetections = faceapi.resizeResults(detections, displaySize);
+
+        //         //las coincidencias
+        //         const results = resizedDetections.map(d => faceMatcher.findBestMatch(d
+        //             .descriptor));
+
+        //         resultados.push(results);
+
+        //         console.log("resizedDetections", resizedDetections)
+        //         console.log("findBestMatch", results)
+
+        //         const inputImg = docum
+        //         ent.getElementById('inputImg');
+        //         inputImg.src = URL.createObjectURL(imageUpload.files[i]);
+        //         const canvas = document.getElementById('overlay');
+        //         const ctx = canvas.getContext('2d');
+        //         canvas.width = image.width;
+        //         canvas.height = image.height;
+        //         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        //         // // muestra la imagen seleccionada
+        //         // const inputImg = document.getElementById('inputImg');
+        //         // inputImg.src = URL.createObjectURL(imageUpload.files[0]);
+
+        //         // // dibuja en el canvas
+        //         // const canvas = document.getElementById('overlay');
+        //         // const ctx = canvas.getContext('2d');
+        //         // canvas.width = image.width;
+        //         // canvas.height = image.height;
+        //         // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //         // ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        //         // // dibuja el cuadro alrededor de la cara reconocida
+        //         // resizedDetections.forEach((result, i) => {
+        //         //     const box = result.detection.box;
+        //         //     const drawBox = new faceapi.draw.DrawBox(box, {
+        //         //         label: result.toString()
+        //         //     });
+        //         //     drawBox.draw(canvas);
+        //         // });
+
+        //     }
+        //     console.log(resultados);
+
+        // }
     </script>
 </div>

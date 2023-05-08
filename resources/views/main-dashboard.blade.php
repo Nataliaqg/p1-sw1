@@ -35,7 +35,7 @@
     @include('layouts.dashboard.navbar')
     {{-- Sidebar --}}
     @include('layouts.dashboard.sidebar')
-
+    
    
 </body>
 

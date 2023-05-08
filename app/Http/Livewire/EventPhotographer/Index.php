@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\EventPhotographer;
 
+use App\Models\Event;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -31,23 +32,23 @@ class Index extends Component
 
     public function render()
     {
-
         return view('livewire.event-photographer.index');
     }
 
     public function store(){
-        //dd($this->eventPhotographies);
+        
         $imagenes = $this->photography->store('documents', 'public');
         $url = Storage::url($imagenes);
         $user = Auth()->user();
         $photographer=$user->Photographer;
-        Photography::create([
+        $photography=Photography::create([
             'price'=>$this->eventPhotographies['price'],
             'status'=>$this->eventPhotographies['status'],
             'url_path'=>$url,
             'event_id'=>$this->event_id,
             'photographer_id'=>$photographer->id
         ]);
+        $this->emit('recognize',$this->event_id, $photography);
         $this->closeModal();
     }
 
@@ -68,6 +69,7 @@ class Index extends Component
         $this->openModal=true;
 
     }
+
     public function closeModal(){
         $this->openModal=false;
         $this->emit('refresh');

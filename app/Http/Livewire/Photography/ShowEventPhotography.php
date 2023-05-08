@@ -32,6 +32,6 @@ class ShowEventPhotography extends Component
     }
     public function addCart($id){
         // dd($id);
-        $this->emit('addCart2',$id);
+        $this->emit('addCart',$id);
     }
 }
