@@ -7,7 +7,7 @@ use App\Http\Controllers\SaaSView;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Livewire\EventPhotographer\RequestEventPhotographer;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +41,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/invitation/{event_id}',[EventController::class,'acceptInvitation'])->name('event.invitation');
         Route::get('/show/{event_id}',[EventController::class,'show'])->name('event.show');
     });
+
+    Route::get('/request', [EventPhotographerController::class, 'request'])->name('request.index');
+
     
 });
 
