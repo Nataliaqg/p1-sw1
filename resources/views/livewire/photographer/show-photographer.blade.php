@@ -22,7 +22,6 @@
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
-                                            <th>Tipo</th>
                                             <th>Email</th>
                                             <th>Telefono</th>
                                             <th>Descripcion</th>
@@ -30,32 +29,21 @@
                                             <th>Accion</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Tipo</th>
-                                            <th>Email</th>
-                                            <th>Telefono</th>
-                                            <th>Descripcion</th>
-                                            <th>Costo Servicio</th>
-                                            <th>Accion</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        {{-- Fotografo1 --}}
+                                        @foreach ($userPhotographers as $userPhotographer)
+                                             {{-- Fotografo1 --}}
                                         <div class="py-2">
                                             <tr>
                                                 <td style="padding: 8px">
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar me-2"><img class="avatar-img img-fluid" src="assets/img/illustrations/profiles/profile-1.png" /></div>
-                                                        Tiger Nixon
+                                                        {{$userPhotographer->name}}
                                                     </div>
                                                 </td>
-                                                <td style="padding: 8px">tiger@email.com</td>
-                                                <td style="padding: 8px">Independiente</td>
-                                                <td style="padding: 8px">75696584</td>
-                                                <td style="padding: 8px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam libero maxime voluptas adipisci eius harum enim et modi. Mollitia molestias ut odit, perferendis voluptas atque cupiditate unde nisi corporis quaerat.</td>
-                                                <td style="padding: 8px">200bs</td>
+                                                <td style="padding: 8px">{{$userPhotographer->email}}</td>
+                                                <td style="padding: 8px">{{$userPhotographer->phone}}</td>
+                                                <td style="padding: 8px">{{$userPhotographer->Photographer->description}}</td>
+                                                <td style="padding: 8px">{{$userPhotographer->Photographer->service_price}} bs</td>
                                                 <td style="padding: 8px">
                                                    <div >
                                                     <button class="btn btn-warning" type="button">Solicitar</button>
@@ -63,27 +51,7 @@
                                                 </td>
                                             </tr>
                                         </div>
-                                        {{-- Fotografo2 --}}
-                                        <div>
-                                            <tr>
-                                                <td style="padding: 8px">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar me-2"><img class="avatar-img img-fluid" src="assets/img/illustrations/profiles/profile-1.png" /></div>
-                                                        Tiger Nixon
-                                                    </div>
-                                                </td>
-                                                <td style="padding: 8px">tiger@email.com</td>
-                                                <td style="padding: 8px">Independiente</td>
-                                                <td style="padding: 8px">75696584</td>
-                                                <td style="padding: 8px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam libero maxime voluptas adipisci eius harum enim et modi. Mollitia molestias ut odit, perferendis voluptas atque cupiditate unde nisi corporis quaerat.</td>
-                                                <td style="padding: 8px">200bs</td>
-                                                <td style="padding: 8px">
-                                                   <div >
-                                                    <button class="btn btn-warning" type="button">Solicitar</button>
-                                                   </div>
-                                                </td>
-                                            </tr>
-                                        </div>
+                                        @endforeach
                                     </tbody>
                                 </table>
 
