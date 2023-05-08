@@ -65,4 +65,11 @@
             </div>
         </main>
     @endif
+    <script>
+        document.addEventListener('livewire:load', function() {
+            Livewire.on('addCart2', function(id) {
+                console.log("fotografia:", id)
+            });
+        });
+    </script>
 </div>
