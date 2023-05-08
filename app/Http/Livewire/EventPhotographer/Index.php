@@ -34,9 +34,9 @@ class Index extends Component
     }
 
     public function store(){
-        $eventData = ['message' => 'Hola a todos!'];
-        app(LivewireManager::class)->emit('my-event', $eventData);
-        return;
+        // $eventData = ['message' => 'Hola a todos!'];
+        // app(LivewireManager::class)->emit('my-event', $eventData);
+        // return;
         $imagenes = $this->photography->store('documents', 'public');
         $url = Storage::url($imagenes);
         $user = Auth()->user();
