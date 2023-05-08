@@ -10,10 +10,38 @@
         </div>
     </div>
     <div class="card-body">
-        <div class="row">
-            @if ($images->isEmpty())
-                <span>Aun no se han subido fotografias del evento</span>
-            @else
+        @if ($images->isEmpty())
+            <span>Aun no se han subido fotografias del evento</span>
+        @else
+            @if (count($Myimages) > 0)
+                <p>Fotos donde aparezco:</p>
+                <div class="row">
+                    @foreach ($Myimages as $myimage)
+                        {{-- Foto --}}
+                        <div class="col-md-4" id="{{ $myimage->id }}">
+                            <div class="card bg-light mb-4">
+                                <div class="card-body" style="height: 350px;">
+                                    <img style="width: 100%; height: 100%;" src="{{ asset($myimage->url_path) }}"
+                                        alt="">
+                                </div>
+                                <div class="card-footer" style="max-height: 80px">
+                                    <div style="flex-direction: row">
+                                        <span>Fotografo:</span>
+                                        <span>{{ $myimage->Photographer->User->name }}</span>
+                                    </div>
+                                    <div style="flex-direction: row">
+                                        <span>Precio:</span>
+                                        <span>{{ $myimage->price }}</span>
+                                    </div>
+                                    <button type="button" wire:click="addCart('{{ $myimage->id }}')">Añadir al
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+            <div class="row">
                 @foreach ($images as $image)
                     {{-- Foto --}}
                     <div class="col-md-4" id="{{ $image->id }}">
@@ -31,13 +59,14 @@
                                     <span>Precio:</span>
                                     <span>{{ $image->price }}</span>
                                 </div>
-                                <button type="button" wire:click="addCart('{{ $image->id }}')">Añadir al carrito</button>
+                                <button type="button" wire:click="addCart('{{ $image->id }}')">Añadir al
+                                    carrito</button>
                             </div>
                         </div>
                     </div>
                 @endforeach
 
-            @endif
-        </div>
+        @endif
     </div>
+</div>
 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Faceid;
 
 use App\Models\Event;
+use App\Models\Notification;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 class Test extends Component
@@ -42,6 +43,17 @@ class Test extends Component
         $this->emit('face-api', $usuarios, $photography);
     }
     public function setNotifications($users_id,$photography_id){
-        dd($users_id,$photography_id);
+        foreach ($users_id as $user_id) {
+            if ($user_id!=="unknown"){
+                $notifications=Notification::where('user_id',$user_id)->where('photography_id',$photography_id)->get()->first();
+                if (!$notifications){
+                    Notification::create([
+                        'description'=>"Apareces en esta foto!",
+                        'photography_id'=>$photography_id,
+                        'user_id'=>$user_id,
+                    ]);
+                }
+            }
+        }
     }
 }

@@ -80,7 +80,6 @@ class EditUser extends Component
         $user->save();
         $this->user=$user->toArray();
         $this->openModal();
-        //$this->openShowUser();
     }
 
     public function openModal(){

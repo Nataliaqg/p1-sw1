@@ -18,4 +18,8 @@ class Notification extends Model
     public function User(){
         return $this->belongsTo(User::class,'user_id');
     }
+
+    public function Photography(){
+        return $this->belongsTo(Photography::class,'photography_id');
+    }
 }

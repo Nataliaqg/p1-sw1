@@ -80,7 +80,7 @@ class RegisterController extends Controller
             'birthdate' => $data['birthdate'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ])->assignRole('Invitado');
 
         Photographer::create([
             'user_id'=>$user->id,
