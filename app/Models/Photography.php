@@ -23,7 +23,7 @@ class Photography extends Model
         return $this->belongsTo(Event::class,'event_id');
     }
 
-    public function Guests(){
-        return $this->belongsToMany(Guest::class,'guest_photography');
+    public function Users(){
+        return $this->belongsToMany(User::class,'user_photography');
     }
 }
