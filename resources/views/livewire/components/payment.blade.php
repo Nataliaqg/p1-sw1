@@ -45,8 +45,8 @@
                                 </div>
                             </div>
                             <div>
-                                <button class="btn btn-dark" type="button" style="margin-top: 15px; width: 100%">PAGAR
-                                    100 bs</button>
+                                <button wire:click='accept' class="btn btn-dark" type="button" style="margin-top: 15px; width: 100%">PAGAR
+                                    {{$this->price}} bs</button>
                             </div>
                         </div>
 
