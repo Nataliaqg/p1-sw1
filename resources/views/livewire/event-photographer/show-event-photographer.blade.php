@@ -1,5 +1,5 @@
 <div>
-    @livewire('photographer.show-photographer',['event_id'=>$event->id])
+    @livewire('photographer.show-photographer', ['event_id' => $event->id])
     <div style="display: flex; flex-direction: column">
         {{-- PRIMERA TABLA --}}
         <div class="card" style="margin-top: 20px !important">
@@ -25,8 +25,14 @@
                             <div class="d-flex align-items-center flex-shrink-0 me-3">
                                 <div class="avatar avatar-xl me-3 bg-gray-200"><img class="avatar-img img-fluid"
                                         src="assets/img/illustrations/profiles/profile-1.png" alt="" /></div>
-                                <div class="d-flex flex-column fw-bold">
-                                    <div class="text-dark line-height-normal mb-1">{{ $confirmedPhotographer->User->name }}</div>
+                                <div style="display: flex; flex-direction: column">
+                                    <div class="d-flex flex-column fw-bold">
+                                        <div class="text-dark line-height-normal mb-1">
+                                            {{ $confirmedPhotographer->User->name }}</div>
+                                    </div>
+                                    <div>
+                                        <span>Telefono: {{ $confirmedPhotographer->User->phone }}</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="dropdown no-caret">
@@ -62,8 +68,14 @@
                             <div class="d-flex align-items-center flex-shrink-0 me-3">
                                 <div class="avatar avatar-xl me-3 bg-gray-200"><img class="avatar-img img-fluid"
                                         src="assets/img/illustrations/profiles/profile-1.png" alt="" /></div>
-                                <div class="d-flex flex-column fw-bold">
-                                    <div class="text-dark line-height-normal mb-1">{{ $pendingPhotographer->User->name }}</div>
+                                <div style="display: flex; flex-direction: column">
+                                    <div class="d-flex flex-column fw-bold">
+                                        <div class="text-dark line-height-normal mb-1">
+                                            {{ $pendingPhotographer->User->name }}</div>
+                                    </div>
+                                    <div>
+                                        <span>Telefono: {{ $pendingPhotographer->User->phone }}</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="dropdown no-caret">

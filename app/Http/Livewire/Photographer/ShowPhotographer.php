@@ -45,10 +45,13 @@ class ShowPhotographer extends Component
 
     public function addPhotographer($id)
     {
+        //recibe el fotografo y crea un nuevo registro en Event_photographer con solicitud false
         Event_Photographer::create([
             'event_id' => $this->event_id,
             'photographer_id' => $id,
         ]);
+
+         $this->emit('refreshPhotographersList');
     }
 
     public function openModalShowPhotographer()
