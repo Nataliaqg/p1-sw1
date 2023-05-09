@@ -27,10 +27,19 @@ class ShowPhotographer extends Component
     }
     public function render()
     {
+        //trae el evento
         $event = Event::find($this->event_id);
-        $eventPhotographers = $event->Photographers;
+        //trae la coleccion de los photographer_id de la tabla intermedia eventphotographer que estan asociados a ese evento
+        $eventPhotographers = Event_Photographer::select('photographer_id')->where('event_id',$this->event_id)->get();
+        //dd($eventPhotographers);
+        //trae coleccion de los user_id de photographer que no estan dentro de la coleccion de eventphotographers y que son fotografos activos
         $photographersAvailable = Photographer::select('user_id')->whereNotIn('id', $eventPhotographers)->where('status', true)->get();
+        //dd($photographersAvailable);
+        //obtenemos los fotografos que no estan asociados a este evento y que no seamos nosotros los organizadores con perfil de fotografo
         $this->userPhotographers = User::whereIn('id', $photographersAvailable)->where('id', '<>', Auth::id())->get();
+        //dd($this->userPhotographers);
+
+
         return view('livewire.photographer.show-photographer');
     }
 
@@ -39,7 +48,6 @@ class ShowPhotographer extends Component
         Event_Photographer::create([
             'event_id' => $this->event_id,
             'photographer_id' => $id,
-            'status' => "En espera"
         ]);
     }
 

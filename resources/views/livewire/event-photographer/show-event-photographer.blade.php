@@ -16,24 +16,17 @@
                 </div>
             </div>
             <div class="card-body">
-                @if ($photographers->isEmpty())
-                    <span>Aun no tienes fotografos designados para este evento</span>
+                @if ($confirmedPhotographers->isEmpty())
+                    <span>Aun no tienes fotografos confirmados para este evento</span>
                 @else
                     {{-- Fotografo --}}
-                    @foreach ($photographers as $photographer)
+                    @foreach ($confirmedPhotographers as $confirmedPhotographer)
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div class="d-flex align-items-center flex-shrink-0 me-3">
                                 <div class="avatar avatar-xl me-3 bg-gray-200"><img class="avatar-img img-fluid"
                                         src="assets/img/illustrations/profiles/profile-1.png" alt="" /></div>
                                 <div class="d-flex flex-column fw-bold">
-                                    <div class="text-dark line-height-normal mb-1">{{ $photographer->User->name }}</div>
-                                    <div class="small text-muted line-height-normal">
-                                        @if ($photographer->specialization_id)
-                                            {{ $photographer->Specialization->name }}
-                                        @else
-                                            Ninguna
-                                        @endif
-                                    </div>
+                                    <div class="text-dark line-height-normal mb-1">{{ $confirmedPhotographer->User->name }}</div>
                                 </div>
                             </div>
                             <div class="dropdown no-caret">
@@ -60,24 +53,17 @@
                 </div>
             </div>
             <div class="card-body">
-                @if ($photographers->isEmpty())
+                @if ($pendingPhotographers->isEmpty())
                     <span>Aun no tienes fotografos designados para este evento</span>
                 @else
                     {{-- Fotografo --}}
-                    @foreach ($photographers as $photographer)
+                    @foreach ($pendingPhotographers as $pendingPhotographer)
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div class="d-flex align-items-center flex-shrink-0 me-3">
                                 <div class="avatar avatar-xl me-3 bg-gray-200"><img class="avatar-img img-fluid"
                                         src="assets/img/illustrations/profiles/profile-1.png" alt="" /></div>
                                 <div class="d-flex flex-column fw-bold">
-                                    <div class="text-dark line-height-normal mb-1">{{ $photographer->User->name }}</div>
-                                    <div class="small text-muted line-height-normal">
-                                        @if ($photographer->specialization_id)
-                                            {{ $photographer->Specialization->name }}
-                                        @else
-                                            Ninguna
-                                        @endif
-                                    </div>
+                                    <div class="text-dark line-height-normal mb-1">{{ $pendingPhotographer->User->name }}</div>
                                 </div>
                             </div>
                             <div class="dropdown no-caret">

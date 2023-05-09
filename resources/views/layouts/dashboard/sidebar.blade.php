@@ -7,7 +7,7 @@
                     <div style="margin-top: 10px">
                         <a class="nav-link collapsed">
                             {{-- <div class="nav-link-icon" ><i data-feather="home"></i></div> --}}
-                            <div style="display: flex; flex-direction: row; border: solid gainsboro;">
+                            <div style="display: flex; flex-direction: row; background-color: gainsboro">
                                 <i data-feather="home"></i>
                                 <a class="nav-link" href="{{route('home')}}">Home</a>
                             </div>
@@ -18,7 +18,7 @@
                     <div >
                         <a class="nav-link collapsed">
                             {{-- <div class="nav-link-icon" ><i data-feather="home"></i></div> --}}
-                            <div style="display: flex; flex-direction: row; border: solid gainsboro;">
+                            <div style="display: flex; flex-direction: row;background-color: gainsboro">
                                 <i data-feather="home"></i>
                                 <a class="nav-link" href="{{route('event.index')}}">MIS EVENTOS</a>
                             </div>
@@ -29,7 +29,7 @@
                     <div >
                         <a class="nav-link collapsed">
                             {{-- <div class="nav-link-icon" ><i data-feather="home"></i></div> --}}
-                            <div style="display: flex; flex-direction: row; border: solid gainsboro;">
+                            <div style="display: flex; flex-direction: row; background-color: gainsboro">
                                 <i data-feather="home"></i>
                                 <a class="nav-link" href="{{route('purchase.index')}}">MIS COMPRAS</a>
                             </div>
@@ -41,7 +41,7 @@
                     <div >
                         <a class="nav-link collapsed">
                             {{-- <div class="nav-link-icon" ><i data-feather="home"></i></div> --}}
-                            <div style="display: flex; flex-direction: row; border: solid gainsboro;">
+                            <div style="display: flex; flex-direction: row; background-color: gainsboro">
                                 <i data-feather="home"></i>
                                 <a class="nav-link" href="{{route('request.index')}}" >MIS SOLICITUDES</a>
                             </div>
