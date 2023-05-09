@@ -57,10 +57,10 @@
                         {{-- Foto --}}
                         <div class="col-md-4" id="{{ $image->id }}">
                             <div class="card bg-light mb-4">
-                                <div class="card-body" style="height: 350px;">
-                                    <img style="width: 100%; height: 100%;" src="{{ asset($image->url_path) }}"
-                                        alt="">
-                                </div>
+                                <div class="card-body" style="height: 350px; position: relative">
+                                    <img style="width: 100%; height: 100%;" src="{{ asset($image->url_path) }}" alt="">
+                                    <div class="fw-800" style="position: absolute; bottom: 50%; right: 15%; font-size: 30px; color: #ffff;">MARCA DE AGUA</div>
+                                </div>                                
                                 <div class="card-footer" style="max-height: 80px">
                                     <div style="display: flex; flex-direction: row; justify-content: space-between">
                                         <div>
@@ -89,3 +89,8 @@
     </div>
 </div>
 </div>
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>

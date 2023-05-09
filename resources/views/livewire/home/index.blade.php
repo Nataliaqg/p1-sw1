@@ -9,6 +9,20 @@
                              Bienvenido, {{ $user['name'] }} !
                         </h1>
                         <div class="page-header-subtitle fw-700" style="color: #ffffff;">"SnapMatch: Captura y revive los mejores momentos una y otra vez"</div>
+                        <div style="display: flex; flex-direction: row">
+                            <div style="color: #ffffff;">
+                                Estas suscrito a estos perfiles:
+                            </div>
+                            <div class="text-indigo fw-800" style="margin-left: 5px">
+                                INVITADO
+                                @if ($isOrganizer)
+                                    , ORGANIZADOR
+                                @endif
+                                @if ($isPhotographer)
+                                    , FOTOGRAFO
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

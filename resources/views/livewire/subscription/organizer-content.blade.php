@@ -26,7 +26,7 @@
                 </li>
                 <li class="list-group-item">
                     <i class="text-secondary me-2" data-feather="check-circle"></i>
-                    Recibe notificaciones de fotos donde apareces
+                    Visualizar el estado de tus solicitudes
                 </li>
                 <li class="list-group-item">
                     <i class="text-secondary me-2" data-feather="check-circle"></i>
