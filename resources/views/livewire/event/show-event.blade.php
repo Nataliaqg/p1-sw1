@@ -7,15 +7,16 @@
                         <div>
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="layout"></i></div>
-                                Evento "{{$event->name}}"
+                                Evento "{{ $event->name }}"
                             </h1>
-                            <Span class="fw-800" style="color: #fff; margin-left: 8px">Organizador: {{$event->Organizer->User->name}}</Span>
+                            <Span class="fw-800" style="color: #fff; margin-left: 8px">Organizador:
+                                {{ $event->Organizer->User->name }}</Span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="    position: relative; left: 23px">
+        <div style="position: relative; left: 23px">
             <!-- Button with lift -->
             <a class="btn btn-primary lift bg-danger" wire:click='showEventInfo()'>Informacion</a>
             <!-- Button with lift -->

@@ -15,7 +15,7 @@ class CreateEventPhotographerTable extends Migration
     {
         Schema::create('event_photographer', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
+            $table->string('status')->default('En espera');
             $table->unsignedBigInteger('photographer_id');
             $table->foreign('photographer_id')->references('id')->on('photographers')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('event_id');

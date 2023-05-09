@@ -1,7 +1,7 @@
 <div>
     {{-- FACEID --}}
     @livewire('faceid.test')
-    
+
     @if ($this->create)
         @livewire('event.create-event')
     @endif
@@ -35,44 +35,40 @@
                         <div style="display: flex; justify-content: space-between">
                             <span>Mis eventos</span>
                             @can('event.create')
-                            <a wire:click='createEvent()' class="btn btn-sm btn-primary-soft text-primary"
-                            style="right: 0%">Agregar
-                            evento</a>
+                                <a wire:click='createEvent()' class="btn btn-sm btn-primary-soft text-primary"
+                                    style="right: 0%">Agregar
+                                    evento</a>
                             @endcan
                         </div>
                         <div>
                             @can('event.guestEvents')
-                            <button class="btn btn-primary lift bg-danger" wire:click="$emit('showEventList', 'showGuest')">Soy Invitado</button>
+                                <button class="btn btn-primary lift bg-danger"
+                                    wire:click="$emit('showEventList', 'showGuest')">Soy Invitado</button>
                             @endcan
                             @can('event.organizerEvents')
-                            <button class="btn btn-primary lift bg-warning" wire:click="$emit('showEventList', 'showOrganizer')">Soy Organizador</button>
+                                <button class="btn btn-primary lift bg-warning"
+                                    wire:click="$emit('showEventList', 'showOrganizer')">Soy Organizador</button>
                             @endcan
                             @can('event.photographerEvents')
-                            <button class="btn btn-primary lift bg-info" wire:click="$emit('showEventList', 'showPhotographer')">Soy Fotografo</button>
+                                <button class="btn btn-primary lift bg-info"
+                                    wire:click="$emit('showEventList', 'showPhotographer')">Soy Fotografo</button>
                             @endcan
                             {{-- <a class="nav-link disabled" href="#!" tabindex="-1" aria-disabled="true">Disabled</a> --}}
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                        @if ($componentToShow === 'showGuest')
-                            @livewire('event.index.guest-event')
-                        @elseif ($componentToShow === 'showOrganizer')
-                            @livewire('event.index.organizer-event')
-                        @elseif ($componentToShow === 'showPhotographer')
-                            @livewire('event.index.photographer-event')
-                        @endif
+                            @if ($componentToShow === 'showGuest')
+                                @livewire('event.index.guest-event')
+                            @elseif ($componentToShow === 'showOrganizer')
+                                @livewire('event.index.organizer-event')
+                            @elseif ($componentToShow === 'showPhotographer')
+                                @livewire('event.index.photographer-event')
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </main>
     @endif
-    <script>
-        document.addEventListener('livewire:load', function() {
-            Livewire.on('addCart2', function(id) {
-                console.log("fotografia:", id)
-            });
-        });
-    </script>
 </div>

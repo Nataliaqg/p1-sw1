@@ -46,7 +46,7 @@
                                                 <td style="padding: 8px">{{$userPhotographer->Photographer->service_price}} bs</td>
                                                 <td style="padding: 8px">
                                                    <div >
-                                                    <button class="btn btn-warning" type="button">Solicitar</button>
+                                                    <button wire:click="addPhotographer('{{$userPhotographer->Photographer->id}}')" class="btn btn-warning" type="button">Solicitar</button>
                                                    </div>
                                                 </td>
                                             </tr>

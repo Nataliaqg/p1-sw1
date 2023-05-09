@@ -1,5 +1,5 @@
 <div>
-    @livewire('photographer.show-photographer')
+    @livewire('photographer.show-photographer',['event_id'=>$event->id])
     <div style="display: flex; flex-direction: column">
         {{-- PRIMERA TABLA --}}
         <div class="card" style="margin-top: 20px !important">
@@ -8,8 +8,10 @@
                 <div style="display: flex; justify-content: space-between">
                     <span>Fotografos confirmados:</span>
                     @can('event.addPhotographer')
-                        <a wire:click='openModalShowPhotographer' class="btn btn-sm btn-primary-soft text-primary"
-                            style="right: 0%">Agregar fotografo</a>
+                        @if ($user->ImOrganizer($event))
+                            <a wire:click='openModalShowPhotographer' class="btn btn-sm btn-primary-soft text-primary"
+                                style="right: 0%">Agregar fotografo</a>
+                        @endif
                     @endcan
                 </div>
             </div>

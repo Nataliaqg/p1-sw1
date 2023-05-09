@@ -71,4 +71,23 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Photography::class, 'user_photography');
     }
+    public function ImOrganizer($event){
+        if ($this->Organizer->id==$event->Organizer->id){
+            return true;
+        }
+        return false;
+    }
+    public function ImPhotographer($event){
+        $photographers=$event->Photographers;
+        // foreach ($photographers as $photographer) {
+        //     if ($photographer->id===$this->Photographer->id){
+        //         return true;
+        //     }
+        // }
+        $exist=$photographers->find($this->Photographer->id);
+        if ($exist){
+            return true;
+        }
+        return false;
+    }
 }

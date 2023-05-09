@@ -4,6 +4,7 @@ namespace App\Http\Livewire\EventPhotographer;
 
 use App\Models\Event;
 use App\Models\Photographer;
+use App\Models\User;
 use Livewire\Component;
 
 class ShowEventPhotographer extends Component
@@ -17,7 +18,8 @@ class ShowEventPhotographer extends Component
     {
         $event=Event::find($this->event_id);
         $photographers=$event->Photographers;
-        return view('livewire.event-photographer.show-event-photographer',compact('photographers'));
+        $user = User::find(Auth()->user()->id);
+        return view('livewire.event-photographer.show-event-photographer',compact('event','user','photographers'));
     }
 
     public function openModalShowPhotographer(){

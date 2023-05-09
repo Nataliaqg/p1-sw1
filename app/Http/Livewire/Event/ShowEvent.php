@@ -11,7 +11,6 @@ class ShowEvent extends Component
     public $showEventInfo=false;
     public $showEventPhotographer=false;
     public $showEventPhotography=false;
-    public $event;
     public $event_id;
     //
     public function mount($event_id){
@@ -21,8 +20,8 @@ class ShowEvent extends Component
 
     public function render()
     {
-        $this->event=Event::find($this->event_id);
-        return view('livewire.event.show-event');
+        $event=Event::find($this->event_id);
+        return view('livewire.event.show-event',compact('event'));
     }
 
     public function showEventInfo(){

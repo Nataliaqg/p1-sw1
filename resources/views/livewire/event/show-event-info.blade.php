@@ -10,10 +10,11 @@
                     <div style="display: flex; justify-content: space-between">
                         <span>Detalle del evento:</span>
                         @can('event.edit')
-                        @if ($IamOrganizer)
-                            <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%" wire:click='showEditEvent()'>Editar evento</a>
-                        @endif
-                    @endcan                    
+                            @if ($user->ImOrganizer($event))
+                                <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%"
+                                    wire:click='showEditEvent()'>Editar evento</a>
+                            @endif
+                        @endcan
                     </div>
                 </div>
                 <div class="card-body">
@@ -71,43 +72,46 @@
             </div>
 
             @can('event.showQr')
-                 {{-- card del qr --}}
-            <div class="card" style="margin-top: 20px !important ;width: 30%">
-                <div class="card-header">
-                    <div style="display: flex; justify-content: space-between">
-                        <span>QR del evento:</span>
-                        <a id="btn-download" class="btn btn-sm btn-primary-soft text-primary" href="{{ asset($event->guest_qr_path) }}"
-                            download>Descargar</a>
+            @if ($user->ImOrganizer($event))
+                {{-- card del qr --}}
+                <div class="card" style="margin-top: 20px !important ;width: 30%">
+                    <div class="card-header">
+                        <div style="display: flex; justify-content: space-between">
+                            <span>QR del evento:</span>
+                            <a id="btn-download" class="btn btn-sm btn-primary-soft text-primary"
+                                href="{{ asset($event->guest_qr_path) }}" download>Descargar</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <img src="{{ asset($event->guest_qr_path) }}" alt="" style="width: 100%; height: 100%;">
                     </div>
                 </div>
-                <div class="card-body">
-                    <img src="{{ asset($event->guest_qr_path) }}" alt="" style="width: 100%; height: 100%;">
-                </div>
-            </div>
+                <script>
+                    const downloadButton = document.getElementById('btn-download');
+                    downloadButton.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        const imageSource = this.getAttribute('href');
+                        const imageFileName = getFileNameFromURL(imageSource);
+
+                        const link = document.createElement('a');
+                        link.href = imageSource;
+                        link.download = imageFileName;
+                        link.style.display = 'none';
+
+                        document.body.appendChild(link);
+                        link.click();
+
+                        document.body.removeChild(link);
+                    });
+
+                    function getFileNameFromURL(url) {
+                        const parts = url.split('/');
+                        return parts[parts.length - 1];
+                    }
+                </script>
+            @endif
             @endcan
         </div>
-        <script>
-            const downloadButton = document.getElementById('btn-download');
-            downloadButton.addEventListener('click', function(event) {
-                event.preventDefault();
-                const imageSource = this.getAttribute('href');
-                const imageFileName = getFileNameFromURL(imageSource);
 
-                const link = document.createElement('a');
-                link.href = imageSource;
-                link.download = imageFileName;
-                link.style.display = 'none';
-
-                document.body.appendChild(link);
-                link.click();
-
-                document.body.removeChild(link);
-            });
-
-            function getFileNameFromURL(url) {
-                const parts = url.split('/');
-                return parts[parts.length - 1];
-            }
-        </script>
     @endif
 </div>

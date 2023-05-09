@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Photography;
 use App\Models\Event;
 use App\Models\Notification;
 use App\Models\Photography;
+use App\Models\User;
 use Livewire\Component;
 
 class ShowEventPhotography extends Component
@@ -27,7 +28,9 @@ class ShowEventPhotography extends Component
         ->where('notifications.user_id',Auth()->user()->id)
         ->where('photographies.event_id',$this->event_id)
         ->get();
-        return view('livewire.photography.show-event-photography',compact('images','Myimages'));
+        $event=Event::find($this->event_id);
+        $user = User::find(Auth()->user()->id);
+        return view('livewire.photography.show-event-photography',compact('event','user','images','Myimages'));
     }
 
     public function openModal2(){
