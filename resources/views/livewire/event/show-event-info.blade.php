@@ -10,9 +10,10 @@
                     <div style="display: flex; justify-content: space-between">
                         <span>Detalle del evento:</span>
                         @can('event.edit')
-                        <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%"
-                        wire:click='showEditEvent()'>Editar evento</a>
-                        @endcan
+                        @if ($IamOrganizer)
+                            <a class="btn btn-sm btn-primary-soft text-primary" href="#!" style="right: 0%" wire:click='showEditEvent()'>Editar evento</a>
+                        @endif
+                    @endcan                    
                     </div>
                 </div>
                 <div class="card-body">

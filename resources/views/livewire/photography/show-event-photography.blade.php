@@ -49,6 +49,7 @@
             @endif
             <div class="row">
                 @foreach ($images as $image)
+                    @if($image->status == 'Publica') 
                     {{-- Foto --}}
                     <div class="col-md-4" id="{{ $image->id }}">
                         <div class="card bg-light mb-4">
@@ -76,8 +77,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 @endforeach
-
         @endif
     </div>
 </div>
