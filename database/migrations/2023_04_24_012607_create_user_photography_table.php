@@ -17,9 +17,6 @@ class CreateUserPhotographyTable extends Migration
             $table->id();
             $table->date('date');
             $table->time('time');
-            $table->string('purchase_type');
-            $table->decimal('total_sum',12,2);
-            $table->string('guest_note');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('photography_id');

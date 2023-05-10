@@ -2,25 +2,22 @@
 
 namespace App\Http\Livewire\Purchase;
 
+use App\Models\User;
+use App\Models\User_Photography;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class PurchaseIndex extends Component
 {
-    protected $listeners = [
-        'closePurchaseInfo',
-    ];
-    public $showPurchaseInfo=false;
-    public $showIndex=true;
+    
     public function render()
     {
-        return view('livewire.purchase.purchase-index');
+        $user=User::find(Auth()->user()->id);
+        // $images= User_Photography::where('user_id',$user->id)->join('photographies','user_photography.photography_id','photographies.id')->get();
+        //dd($images);
+
+        $images=$user->Photographies;
+        return view('livewire.purchase.purchase-index',compact('images'));
     }
-    public function showPurchaseInfo(){
-        $this->showPurchaseInfo=true;
-        $this->showIndex=false;
-    }
-    public function closePurchaseInfo(){
-        $this->showPurchaseInfo=false;
-        $this->showIndex=true;
-    }
+   
 }

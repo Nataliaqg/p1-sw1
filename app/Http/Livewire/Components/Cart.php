@@ -3,14 +3,19 @@
 namespace App\Http\Livewire\Components;
 
 use App\Models\Photography;
+use App\Models\User_Photography;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Carbon\Carbon;
 
 class Cart extends Component
 {
+
     public $totalPurchase;
     public $items=[];
     protected $listeners = [
         'addCart',
+        'acceptPaymentPurchase'
     ];
     public function render()
     {
@@ -37,9 +42,16 @@ class Cart extends Component
         $this->emit('openPaymentModal',$this->totalPurchase,$emitCallback);
     }
     public function acceptPaymentPurchase(){
-        // $user=User::find(Auth()->user()->id);
-        // $user->assignRole('Organizador');
-        // $user->save();
+        $user=Auth()->user();
+        $currentDateTime = Carbon::now();
+        foreach ($this->items as $item) {
+            User_Photography::create([
+                'date'=> $currentDateTime->format('Y-m-d'),
+                'time'=> $currentDateTime->format('H:i:s'),
+                'user_id'=> $user->id,
+                'photography_id'=>$item
+            ]);
+        }
     }
     
 }
