@@ -34,6 +34,12 @@ class Index extends Component
     }
 
     public function store(){
+        $this->validate([
+            'photography' => 'required', // Validación para el campo de la fotografía
+            'eventPhotographies.price' => 'required|numeric', // Validación para el campo de precio
+            'eventPhotographies.status' => 'required', // Validación para el campo de estado
+        ]);
+      
         // $eventData = ['message' => 'Hola a todos!'];
         // app(LivewireManager::class)->emit('my-event', $eventData);
         // return;

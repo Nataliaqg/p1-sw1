@@ -28,8 +28,13 @@
                                                     style="max-width: 300px; max-height: 300px; margin-bottom: 10px">
                                             @endif
                                             <form wire:submit.prevent="upload">
-                                                <input id="imagen" type="file" wire:model="photography">
-                                                {{-- <button type="submit" style="margin-top: 20px">Subir foto</button> --}}
+                                                <input id="imagen" type="file" wire:model="photography" class="form-control 
+                                                @error('photography') is-invalid @enderror" >
+                                                @error('photography')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                             </form>
                                         </div>
                                         <div class="col-md-9" style="width:50%">
@@ -39,11 +44,11 @@
                                                 <div class="col-md-6">
                                                     <input wire:model="eventPhotographies.price" id="price"
                                                         type="text"
-                                                        class="form-control @error('price') is-invalid @enderror"
+                                                        class="form-control @error('eventPhotographies.price') is-invalid @enderror"
                                                         name="price" required autocomplete="price"
                                                         pattern="[0-9]+([\.,][0-9]+)?" style="margin-left: 10px">
 
-                                                    @error('price')
+                                                    @error('eventPhotographies.price')
                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -62,6 +67,11 @@
                                                         wire:click="$set('eventPhotographies.status', 'Privada')">Privada</a>
                                                 </div>
                                             </div>
+                                            
+                                            @error('eventPhotographies.status')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                            
 
                                         </div>
                                     </div>
