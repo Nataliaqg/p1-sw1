@@ -36,7 +36,7 @@ class CreateEvent extends Component
             $this->event
         );
         $this->newEvent_id=$newEvent->id;
-        $url=$this->generateQr('http://127.0.0.1:8000/event/invitation/'.$newEvent->id);
+        $url=$this->generateQr('http://129.151.121.187:8000/event/invitation/'.$newEvent->id);
         $newEvent->update([
             'guest_qr_path'=>$url
         ]);
