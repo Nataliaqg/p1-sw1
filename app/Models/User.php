@@ -77,6 +77,7 @@ class User extends Authenticatable
         }
         return false;
     }
+
     public function ImPhotographer($event){
         $photographers=$event->Photographers;
         // foreach ($photographers as $photographer) {
@@ -85,6 +86,15 @@ class User extends Authenticatable
         //     }
         // }
         $exist=$photographers->find($this->Photographer->id);
+        if ($exist){
+            return true;
+        }
+        return false;
+    }
+
+    public function ImGuest($event){
+        $guests=$event->Guests;
+        $exist=$guests->find($this->Guest->id);
         if ($exist){
             return true;
         }

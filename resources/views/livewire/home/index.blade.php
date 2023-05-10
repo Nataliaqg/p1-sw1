@@ -33,7 +33,7 @@
         <div class="card">
             <div class="card-header">Suscripciones disponibles:</div>
             <div class="card-body" style="padding: revert">
-                <div class="row">
+                <div class="row my-4">
                     <div class="col-md-4">
                         @livewire('subscription.guest-content')
                     </div>

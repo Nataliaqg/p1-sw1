@@ -5,7 +5,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" style="display: flex; justify-content: center;">
                 <div class="modal-content" style="width: 550px">
 
-                    <div class="card card-header-actions" style="height: 600px;">
+                    <div class="card card-header-actions" style="max-height: 650px; min-height: 550px;">
 
                         <div class="card-header">
                             Detalles de pago

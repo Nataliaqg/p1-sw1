@@ -1,5 +1,5 @@
 <div>
-    <div class="card h-100">
+    <div class="card h-100 mx-2 my-2">
         <div class="card-header bg-transparent">
             <span class="badge bg-secondary-soft text-secondary rounded-pill py-2 px-3 mb-2 fw-800">ORGANIZADOR</span>
             <div style="display: flex; flex-direction: row; justify-content: space-between">
@@ -7,7 +7,11 @@
                     {{$total}} bs
                     <span>/mes</span>
                 </div>
-                <a wire:click='openPaymentModalOrganizer()' class="btn btn-sm btn-primary-soft text-primary">COMPRAR</a>
+                @if(!Auth()->user()->Organizer->status)
+                    <a wire:click='openPaymentModalOrganizer()' class="btn btn-sm btn-primary-soft text-primary">COMPRAR</a>
+                @else
+                    <p style="background: red; border-radius: 0.5rem; color:white; padding: 0.3rem;">Adquirido</p>
+                @endif
             </div>  
         </div>
         <div class="card-body p-0">

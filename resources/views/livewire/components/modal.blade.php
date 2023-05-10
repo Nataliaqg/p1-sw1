@@ -1,4 +1,4 @@
-<div>
+<div style="z-index: 99;">
     <link href="{{ asset('assets/css/components/modal.css') }}" rel="stylesheet">
     @if ($openModal)
     <div class="modal mostrar">

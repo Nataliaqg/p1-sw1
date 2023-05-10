@@ -42,11 +42,18 @@ class EditUser extends Component
             'user.address' => ['required', 'string', 'max:255'],
             'user.birthdate' => ['required', 'date'],
             'user.email' => 'required',
-            'user.photographer.description' => ['required', 'string', 'max:150'],
-            'user.photographer.service_price' => ['required', 'numeric', 'min:1'],
+            // 'user.photographer.description' => ['required', 'string', 'max:150'],
+            // 'user.photographer.service_price' => ['required', 'numeric', 'min:1'],
         ]);
 
         $user = User::find($this->user['id']);
+
+        if ($user->Photographer->status){
+            $this->validate([
+                'user.photographer.description' => ['required', 'string', 'max:150'],
+                'user.photographer.service_price' => ['required', 'numeric', 'min:1'],
+            ]);
+        }
 
         if ($this->photo_path1 !== null) {
             if ($user->photo_path1) {

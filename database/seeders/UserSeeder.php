@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'birthdate' => "1999-11-29",
             'email' => "nataliaquirogag@gmail.com",
             'password' => Hash::make("1234"),
-        ])->assignRole('Organizador');
+        ])->assignRole(['Invitado','Organizador']);
         Photographer::create([
             'user_id'=>$user->id,
         ]);
@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
             'birthdate' => "1999-11-29",
             'email' => "orlando@gmail.com",
             'password' => Hash::make("12345678"),
-        ])->assignRole('Fotografo');
+        ])->assignRole(['Invitado','Fotografo']);
         Photographer::create([
             'user_id'=>$user3->id,
             'status'=>true,
