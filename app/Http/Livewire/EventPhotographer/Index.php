@@ -39,7 +39,6 @@ class Index extends Component
             'eventPhotographies.price' => 'required|numeric', // Validación para el campo de precio
             'eventPhotographies.status' => 'required', // Validación para el campo de estado
         ]);
-      
         // $eventData = ['message' => 'Hola a todos!'];
         // app(LivewireManager::class)->emit('my-event', $eventData);
         // return;
@@ -54,6 +53,8 @@ class Index extends Component
             'event_id'=>$this->event_id,
             'photographer_id'=>$photographer->id
         ]);
+
+        //dd($photography);
         $this->emit('recognize',$this->event_id, $photography);
         $this->closeModal();
     }
