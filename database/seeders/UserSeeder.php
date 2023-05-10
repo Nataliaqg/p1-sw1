@@ -26,16 +26,16 @@ class UserSeeder extends Seeder
             'birthdate' => "1999-11-29",
             'email' => "nataliaquirogag@gmail.com",
             'password' => Hash::make("1234"),
-        ])->assignRole('Organizador','Fotografo','Invitado');
+        ])->assignRole('Organizador');
         Photographer::create([
             'user_id'=>$user->id,
-            'status'=>true,
         ]);
         Guest::create([
             'user_id'=>$user->id,
         ]);
         Organizer::create([
             'user_id'=>$user->id,
+            'status'=>true
         ]);
 
         $user2=User::create([
@@ -47,7 +47,13 @@ class UserSeeder extends Seeder
             'email' => "luciana@gmail.com",
             'password' => Hash::make("12345678"),
         ])->assignRole('Invitado');
+        Photographer::create([
+            'user_id'=>$user2->id,
+        ]);
         Guest::create([
+            'user_id'=>$user2->id,
+        ]);
+        Organizer::create([
             'user_id'=>$user2->id,
         ]);
 
@@ -60,10 +66,15 @@ class UserSeeder extends Seeder
             'email' => "orlando@gmail.com",
             'password' => Hash::make("12345678"),
         ])->assignRole('Fotografo');
-
         Photographer::create([
             'user_id'=>$user3->id,
             'status'=>true,
+        ]);
+        Guest::create([
+            'user_id'=>$user3->id,
+        ]);
+        Organizer::create([
+            'user_id'=>$user3->id,
         ]);
     }
 }

@@ -42,8 +42,8 @@ class EditUser extends Component
             'user.address' => ['required', 'string', 'max:255'],
             'user.birthdate' => ['required', 'date'],
             'user.email' => 'required',
-            'user.photographer.description' => 'required',
-            'user.photographer.service_price' => 'required',
+            'user.photographer.description' => ['required', 'string', 'max:150'],
+            'user.photographer.service_price' => ['required', 'numeric', 'min:1'],
         ]);
 
         $user = User::find($this->user['id']);

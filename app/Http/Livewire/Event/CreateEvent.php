@@ -17,12 +17,13 @@ class CreateEvent extends Component
     }
 
     public function store(){
+       // dd($this->event);
         $this->validate([
-            'event.name' => ['required'],
+            'event.name' => ['required', 'string', 'max:150'],
             'event.date' => ['required'],
             'event.time' => ['required'],
-            'event.address' => ['required'],
-            'event.required_photographers' => ['required']
+            'event.address' => ['required', 'string', 'max:150'],
+            'event.required_photographers' => ['required', 'numeric', 'min:1']
         ]);
         $user = Auth()->user();
 

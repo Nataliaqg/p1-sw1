@@ -185,7 +185,7 @@
                                     <div class="col-md-6">
                                         <input id="service_price" type="number"
                                             class="form-control @error('user.photographer.service_price') is-invalid @enderror"
-                                            wire:model.lazy='user.photographer.service_price'>
+                                            wire:model.lazy='user.photographer.service_price'>bs
 
                                         @error('user.photographer.service_price')
                                             <span class="invalid-feedback" role="alert">
@@ -204,7 +204,7 @@
 
                                     <div class="col-md-6">
                                         <input id="dni" type="text"
-                                            class="form-control @error('dni') is-invalid @enderror" name="dni"
+                                            class="form-control @error('user.dni') is-invalid @enderror" name="dni"
                                             required autocomplete="dni" wire:model.lazy='user.dni'>
 
                                         @error('user.dni')
@@ -221,7 +221,7 @@
 
                                     <div class="col-md-6">
                                         <input id="phone" type="tel"
-                                            class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                            class="form-control @error('user.phone') is-invalid @enderror" name="phone"
                                             required autocomplete="phone" wire:model.lazy='user.phone'>
 
                                         @error('user.phone')
@@ -238,7 +238,7 @@
 
                                     <div class="col-md-6">
                                         <input id="address" type="text"
-                                            class="form-control @error('address') is-invalid @enderror" name="address"
+                                            class="form-control @error('user.address') is-invalid @enderror" name="address"
                                             required autocomplete="address" wire:model.lazy='user.address'>
 
                                         @error('user.address')
@@ -255,7 +255,7 @@
 
                                     <div class="col-md-6">
                                         <input id="birthdate" type="date"
-                                            class="form-control @error('birthdate') is-invalid @enderror"
+                                            class="form-control @error('user.birthdate') is-invalid @enderror"
                                             name="birthdate" required autocomplete="birthdate"
                                             wire:model.lazy='user.birthdate'>
 
@@ -273,7 +273,7 @@
 
                                     <div class="col-md-6">
                                         <input id="email" type="email"
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            class="form-control @error('user.email') is-invalid @enderror" name="email"
                                             value="{{ old('email') }}" required autocomplete="email"
                                             wire:model.lazy='user.email'>
 
